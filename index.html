@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>JavaScript Shell 1.4</title>
+<script src="lib/coffee-script.js"></script>
+<script src="lib/underscore.js"></script>
+<script src="lib/js2coffee.min.js"></script>
+
+<script src=lib/codemirror2/lib/codemirror.js></script>
+<script src=lib/codemirror2/mode/javascript/javascript.js></script>
+<script src=lib/codemirror2/mode/coffeescript/coffeescript.js></script>
+<link rel=stylesheet href=lib/codemirror2/lib/codemirror.css>
+<link rel=stylesheet href=lib/codemirror2/theme/monokai.css>
+<link rel=stylesheet href=style.css>
+
+</head>
+
+<body>
+
+  <div id="console">
+    <div id="output"></div>
+
+    <div id="input-wrap"><textarea id="input" class="input" wrap="off" rows="1"></textarea></div>
+  </div>
+<script>
+  var command_history = []
+  var curr_command = -1;
+
+  var editor = CodeMirror.fromTextArea(document.getElementById("input"), {
+    mode: 'coffeescript',
+    theme: 'monokai',
+    extraKeys: {
+      "Shift-Enter": go,
+      "Up": up,
+      "Down": down,
+    }
+  });
+
+  editor.focus();
+
+  window.onresize = size_console;
+
+  function size_console(e) {
+    // TODO
+  };
+
+  function up() {
+    if (curr_command > 0) {
+      curr_command -= 1;
+      editor.setValue(command_history[curr_command]);
+    }
+  };
+
+  function down() {
+    if (curr_command < command_history.length) {
+      curr_command += 1;
+      if (curr_command != command_history.length) {
+        editor.setValue(command_history[curr_command]);
+      } else {
+        editor.setValue("");
+      }
+    }
+  };
+
+  function go() {
+    var code = editor.getValue();
+    editor.setValue("");
+
+    command_history.push(code);
+    curr_command = command_history.length;
+    var jscode = CoffeeScript.compile(code);
+
+    // remove wrapping closure
+    jscode = jscode.substring(16)
+    jscode = jscode.substring(0,jscode.length-16);
+
+    // with underscore
+    jscode = "with (_) {\n" + jscode + "}"
+
+    var result = eval.call(null, jscode);
+
+    // print result
+    output(result);
+  };
+
+  function output(txt) {
+    var coffee_txt = Js2coffee.build(txt + "");
+    var output_node = document.getElementById('output');
+    var txt_node = document.createElement('div');
+    txt_node.appendChild(document.createTextNode(coffee_txt));
+    output_node.appendChild(txt_node);
+  };
+
+</script>
+
+</body>
+
+</html>

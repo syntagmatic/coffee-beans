@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CodeMirror: HTML5 preview</title>
+    <meta charset=utf-8>
+    <script src=../lib/codemirror2/lib/codemirror.js></script>
+    <script src=../lib/codemirror2/mode/xml/xml.js></script>
+    <script src=../lib/codemirror2/mode/javascript/javascript.js></script>
+    <script src=../lib/codemirror2/mode/css/css.js></script>
+    <script src=../lib/codemirror2/mode/htmlmixed/htmlmixed.js></script>
+    <link rel=stylesheet href=../lib/codemirror2/lib/codemirror.css>
+    <style type=text/css>
+      .CodeMirror {
+        width: 90%;
+        margin: 0 auto;
+        border: 1px solid #999;
+      }
+      iframe {
+        width: 100%;
+        height: 340px;
+        border: none;
+      }
+      .iframe {
+        width: 90%;
+        margin: 0 auto;
+        border: 1px solid #999;
+        border-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="iframe">
+        <iframe id=preview></iframe>
+    </div>
+    <textarea id=code name=code>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pie Chart</title>
+    <script type="text/javascript" src="http://raw.github.com/mbostock/d3/master/d3.v2.js"></script>
+    <style type="text/css">
+
+body {
+  font: 10px sans-serif;
+}
+
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+var w = 300,
+    h = 300,
+    r = Math.min(w, h) / 2,
+    data = d3.range(10).map(Math.random),
+    color = d3.scale.category20(),
+    donut = d3.layout.pie(),
+    arc = d3.svg.arc().innerRadius(r * .6).outerRadius(r);
+
+var vis = d3.select("body")
+  .append("svg")
+    .data([data])
+    .attr("width", w)
+    .attr("height", h);
+
+var arcs = vis.selectAll("g.arc")
+    .data(donut)
+  .enter().append("g")
+    .attr("class", "arc")
+    .attr("transform", "translate(" + r + "," + r + ")");
+
+arcs.append("path")
+    .attr("fill", function(d, i) { return color(i); })
+    .attr("d", arc);
+
+arcs.append("text")
+    .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+    .attr("dy", ".35em")
+    .attr("text-anchor", "middle")
+    .attr("display", function(d) { return d.value > .15 ? null : "none"; })
+    .text(function(d, i) { return d.value.toFixed(2); });
+
+    </script>
+  </body>
+</html>
+</textarea>
+    <script>
+      var delay;
+      // Initialize CodeMirror editor with a nice html5 canvas demo.
+      var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+        mode: 'text/html',
+        tabMode: 'indent',
+        onChange: function() {
+          clearTimeout(delay);
+          delay = setTimeout(updatePreview, 30);
+        }
+      });
+      
+      function updatePreview() {
+        var previewFrame = document.getElementById('preview');
+        var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
+        preview.open();
+        preview.write(editor.getValue());
+        preview.close();
+      }
+      setTimeout(updatePreview, 300);
+    </script>
+  </body>
+</html>
