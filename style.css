@@ -1,13 +1,59 @@
-body { margin: 0; padding: 0; background: #000; color: #eee; font-size: 16px; }
+body {
+  margin: 0;
+  padding: 0;
+  background: #bbb;
+  color: #eee;
+  font-size: 16px;
+}
+#console {
+  width: 600px;
+  height: 100%;
+  position: fixed;
+}
+#console .inner {
+  margin: 0 20px;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
 #output {
   font-family: monospace;
-  position: fixed;
+  position: absolute;
   bottom: 0;
-  padding-bottom:180px;
+  padding-bottom:145px;
+  padding-left: 6px;
+}
+#console .buttons {
+  position: absolute;
+  bottom: 140px;
+  right: 0px;
+  width: 540px;
+  margin: 0px 23px;
+}
+#console .buttons button {
+  float: right;
+  background: #272822;
+  color: #f8f8f2;
+  border: none;
+  padding: 2px 6px;
+  margin: 4px 2px;
 }
 #input-wrap {
-  position: fixed;
-  bottom: 0;
-  height: 180px;
-  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  width: 560px;
+  height: 140px;
+}
+.input {
+  padding-top: 12px;
+}
+.CodeMirror-scroll {
+  height: 140px;
+}
+.output {
+  color: #4d5;
+  font-weight: bold;
+}
+.error {
+  color: #f33;
+  font-weight: bold;
 }
