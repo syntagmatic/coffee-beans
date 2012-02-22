@@ -1,5 +1,6 @@
 var commands = new Commands();
 commands.fetch();
+var curr = commands.size();
 
 var output_node = document.getElementById('output');
 
@@ -23,14 +24,19 @@ function size_console(e) {
 };
 
 function up() {
-  editor.setValue()
+  if (curr > 0) {
+    curr -= 1;
+    var command = commands.at(curr);
+    editor.setValue(command.get('contents'));
+  }
 };
 
 function down() {
-  if (curr_command < command_history.length) {
-    curr_command += 1;
-    if (curr_command != command_history.length) {
-      editor.setValue(command_history[curr_command]);
+  if (curr < commands.size()) {
+    curr += 1;
+    if (curr != commands.size()) {
+      var command = commands.at(curr);
+      editor.setValue(command.get('contents'));
     } else {
       editor.setValue("");
     }
@@ -63,6 +69,8 @@ function go() {
   } else if (jscode.type == "error") {
     output_error("CoffeeScript error: " + jscode.result.message);
   }
+
+  curr = commands.size();
 };
 
 function output_print(txt, className) {
