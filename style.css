@@ -53,7 +53,7 @@ body {
   color: #4d5;
   font-weight: bold;
   width: 550px;
-  overflow: auto;
+  word-wrap: break-word;
 }
 .error {
   color: #f33;
