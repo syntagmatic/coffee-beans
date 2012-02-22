@@ -12,6 +12,12 @@ var editor = CodeMirror.fromTextArea(document.getElementById("input"), {
     "Enter": go,
     "Up": up,
     "Down": down,
+    "Ctrl-Space": function(cm) {
+      var cursor = editor.cursorCoords();
+      var coords = editor.coordsChar(cursor);
+      console.log(editor.getTokenAt(coords));
+      CodeMirror.simpleHint(cm, CodeMirror.coffeescriptHint);
+    }
   }
 });
 

@@ -21,12 +21,12 @@ body {
   bottom: 0;
   padding-bottom:145px;
   padding-left: 6px;
+  width: 540px;
 }
 #console .buttons {
   position: absolute;
   bottom: 140px;
   right: 0px;
-  width: 540px;
   margin: 0px 23px;
 }
 #console .buttons button {
@@ -52,8 +52,11 @@ body {
 .output {
   color: #4d5;
   font-weight: bold;
+  width: 550px;
+  overflow: auto;
 }
 .error {
   color: #f33;
   font-weight: bold;
+  width: 540px;
 }
