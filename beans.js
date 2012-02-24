@@ -7,7 +7,7 @@
 
   var editor = CodeMirror.fromTextArea(document.getElementById("input"), {
     mode: 'coffeescript',
-    theme: 'monokai',
+    theme: 'idle',
     extraKeys: {
       "Shift-Enter": CodeMirror.commands.newlineAndIndent,
       "Enter": go,
@@ -18,6 +18,19 @@
   });
 
   editor.focus();
+
+  globalize(_);
+
+  $('#output').css({'max-height': $(window).height() - 130});
+  $(window).bind("resize", function() {
+    $('#output').css({'max-height': $(window).height() - 130});
+  });
+
+  function globalize(obj) {
+    for (key in obj) {
+      window[key] = obj[key];
+    }
+  };
 
   function autocomplete(cm) {
     CodeMirror.simpleHint(cm, CodeMirror.coffeescriptHint);
@@ -79,11 +92,14 @@
       jscode = "with (_) {\n" + jscode.result + "}";
       try {
         var result = eval.call(null, jscode);
-        // print result
-        try { 
-          output(JSON.stringify(result));
-        } catch (error) {
-          output(result);
+
+        if (!_.isUndefined(result)) { 
+          // print result
+          try { 
+            output(result.toString());
+          } catch (error) {
+            output(result);
+          }
         }
       } catch (error) {
         output_error("Javascript error: " + result);
@@ -100,9 +116,10 @@
     txt_node.appendChild(document.createTextNode(txt));
     txt_node.className = className;
     output_node.appendChild(txt_node);
+    $('#output').animate({scrollTop: $('#output')[0].scrollHeight}, 0);
   };
 
-  function output(result) {
+  window.output = function(result) {
     //var coffee_result = Js2coffee.build(result + "");
     output_print(result, "output");
   };

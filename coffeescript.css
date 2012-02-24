@@ -1,0 +1,11 @@
+.cm-s-idle span.cm-comment { color: #919191; }
+.cm-s-idle span.cm-keyword { color: #ff5600;; }
+.cm-s-idle span.cm-string { color: #00a33f; }
+.cm-s-idle span.cm-builtin { font-weight: bold; color: #077; }
+.cm-s-idle span.cm-special { font-weight: bold; color: #0aa; }
+.cm-s-idle span.cm-variable { color: black; }
+.cm-s-idle span.cm-atom { color: #A535AE; }
+.cm-s-idle span.cm-number { color: black; }
+.cm-s-idle span.cm-meta {color: #555;}
+.cm-s-idle span.cm-link { color: #3a3; }
+.cm-s-idle span.cm-operator { color: #ff5600; }
