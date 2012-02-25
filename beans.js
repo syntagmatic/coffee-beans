@@ -23,9 +23,8 @@
 
   // highlight examples
   $('.highlight').each(function() {
-    $(this).addClass('cm-s-idle');
     var code = $(this).text();
-    CodeMirror.runMode(code, "coffeescript", this);
+    highlight(this, code);
   });
 
   $('#output').css({'max-height': $(window).height() - 130});
@@ -135,15 +134,9 @@
     output_print(result, "error");
   };
 
-  var store = {
-    code: 8
+  function highlight(node, code) {
+    $(this).addClass('cm-s-idle');
+    CodeMirror.runMode(code, "coffeescript", node);
   };
 
-  $("#store-code").on("click", function() {
-    var code = editor.getValue();
-    output_print("Saving...", "notice");
-    localStorage.setItem("store.code" + store.code.length, code);
-    
-    output_print("Done", "notice");
-  });
 })();

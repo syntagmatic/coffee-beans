@@ -33,7 +33,10 @@
     tagName: "div",
     className: "input",
     render: function() {
-      $(this.el).text(this.model.get('contents'));
+      var code;
+      code = this.model.get('contents');
+      $(this.el).addClass('cm-s-idle');
+      CodeMirror.runMode(code, "coffeescript", this.el);
       return $('#output').append(this.el);
     }
   });

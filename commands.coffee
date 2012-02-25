@@ -30,5 +30,7 @@ do ->
     tagName: "div"
     className: "input"
     render: ->
-      $(@el).text(@model.get('contents'))
+      code = @model.get('contents')
+      $(@el).addClass('cm-s-idle');
+      CodeMirror.runMode(code, "coffeescript", @el)
       $('#output').append(this.el)
