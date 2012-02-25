@@ -68,6 +68,7 @@ map [1,2,3], (x) -> x*x          # square some numbers</pre>
     <ul>
       <li><strong>Enter:</strong> Run command</li>
       <li><strong>Shift+Enter:</strong> New line</li>
+      <li><strong>Ctrl+Space:</strong> Autocomplete</li>
       <li><strong>Tab:</strong> Indent</li>
       <li><strong>Up:</strong> Previous command</li>
       <li><strong>Down:</strong> Next command</li>
@@ -107,7 +108,7 @@ each ['here', 'we', 'go!'], alert</pre>
     <pre class="highlight">
 pi = Math.PI
 
-angles = [pi/4, pi/2, 3*pi/8]      # data
+angles = [pi/4, 3*pi/8, pi/2]      # data
 convert = (x) -> x*180/pi          # function to map
 
 map angles, convert</pre>
