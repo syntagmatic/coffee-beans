@@ -1,11 +1,13 @@
 (function() {
+  globalize(_);
+
   var commands = new Commands();
   commands.fetch();
   var curr = commands.size();  // current command
 
   var output_node = document.getElementById('output');
 
-  var editor = CodeMirror.fromTextArea(document.getElementById("input"), {
+  window.editor = CodeMirror.fromTextArea(document.getElementById("input"), {
     mode: 'coffeescript',
     theme: 'idle',
     extraKeys: {
@@ -19,7 +21,12 @@
 
   editor.focus();
 
-  globalize(_);
+  // highlight examples
+  $('.highlight').each(function() {
+    $(this).addClass('cm-s-idle');
+    var code = $(this).text();
+    CodeMirror.runMode(code, "coffeescript", this);
+  });
 
   $('#output').css({'max-height': $(window).height() - 130});
   $(window).bind("resize", function() {

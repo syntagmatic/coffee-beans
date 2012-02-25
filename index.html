@@ -12,9 +12,8 @@
 <script src="lib/backbone-localstorage.js"></script>
 <script src="lib/js2coffee.min.js"></script>
 
-<script src="https://raw.github.com/mbostock/d3/master/d3.v2.js"></script>
-
 <script src=lib/codemirror2/lib/codemirror.js></script>
+<script src=lib/codemirror2/lib/util/runmode.js></script>
 <script src=lib/codemirror2/mode/javascript/javascript.js></script>
 <script src=lib/codemirror2/mode/coffeescript/coffeescript.js></script>
 <script src=lib/codemirror2/lib/util/simple-hint.js></script>
@@ -51,18 +50,18 @@
     <p>
       <a href="http://documentcloud.github.com/underscore/">Underscore functions</a> are available in the global namespace. Some examples:
     </p>
-    <pre class="cm-s-idle">
-    range 10                         <span class="cm-comment"># create a range</span>
+    <pre class="highlight">
+    range 10                         # create a range
 
-    isNumber 5                       <span class="cm-comment"># is 5 a number (it is)</span>
+    isNumber 5                       # is 5 a number (it is)
 
-    size {a:1, b:2}                  <span class="cm-comment"># size of object or array</span>
+    size {a:1, b:2}                  # size of object or array
 
-    keys Backbone                    <span class="cm-comment"># get Backbone's properties</span>
+    keys Backbone                    # get Backbone's properties
 
-    sort uniq [4,2,8,4,1,2]          <span class="cm-comment"># unique elements, sorted</span>
+    sort uniq [4,2,8,4,1,2]          # unique elements, sorted
 
-    map [1,2,3], (x) -> x*x          <span class="cm-comment"># square some numbers</span>
+    map [1,2,3], (x) -> x*x          # square some numbers
     </pre>
     <p>
       The code editor is on the bottom left. These are the keyboard shortcuts:
@@ -148,6 +147,9 @@
     has its own way. Follow its form, do not try to program as if you
     were using another language.'
     </pre>
+  </div>
+  <div style="display: none">
+    <textarea id="themer"></textarea>
   </div>
 <script src=commands.js></script>
 <script src=beans.js></script>
