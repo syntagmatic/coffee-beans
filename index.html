@@ -30,7 +30,7 @@
   <div id="console">
     <div class="inner">
       <div id="output">
-        <div class="output">Welcome to CoffeeBeans</div>
+        <pre class="output">Welcome to CoffeeBeans</pre>
       </div>
       <div class="buttons">
         <button id="store-code">Store</button>
@@ -45,24 +45,23 @@
   <div id="main">
     <h1>CoffeeBeans</h1>
     <p>
-    Welcome to CoffeeBeans, a <a href="http://coffeescript.org/">CoffeeScript</a> console. Here's the <a href="https://github.com/syntagmatic/coffee-beans">source</a>.
+    A <a href="http://coffeescript.org/">CoffeeScript</a> console. Here's the <a href="https://github.com/syntagmatic/coffee-beans">source</a>.
     </p>
     <p>
       <a href="http://documentcloud.github.com/underscore/">Underscore functions</a> are available in the global namespace. Some examples:
     </p>
     <pre class="highlight">
-    range 10                         # create a range
+range 10                         # create a range
 
-    isNumber 5                       # is 5 a number (it is)
+isNumber 5                       # is 5 a number (it is)
 
-    size {a:1, b:2}                  # size of object or array
+size {a:1, b:2}                  # size of object or array
 
-    keys Backbone                    # get Backbone's properties
+keys Backbone                    # get Backbone's properties
 
-    sort uniq [4,2,8,4,1,2]          # unique elements, sorted
+sort uniq [4,2,8,4,1,2]          # unique elements, sorted
 
-    map [1,2,3], (x) -> x*x          # square some numbers
-    </pre>
+map [1,2,3], (x) -> x*x          # square some numbers</pre>
     <p>
       The code editor is on the bottom left. These are the keyboard shortcuts:
     </p>
@@ -76,80 +75,16 @@
     <p>
       Command history is saved in local storage, so you can access past commands when you come back.
     </p>
-    <h1>Stories recovered by Marijn Haverbeke</h1>
-    <p>
-      These are here to test scrolling.
-    </p>
-    <pre>
-
-    %% The Two Aspects
-
-    Below the surface of the machine, the program moves. Without effort,
-    it expands and contracts. In great harmony, electrons scatter and
-    regroup. The forms on the monitor are but ripples on the water. The
-    essence stays invisibly below.
-
-    When the creators built the machine, they put in the processor and the
-    memory. From these arise the two aspects of the program.
-
-    The aspect of the processor is the active substance. It is called
-    Control. The aspect of the memory is the passive substance. It is
-    called Data.
-
-    Data is made of merely bits, yet it takes complex forms. Control
-    consists only of simple instructions, yet it performs difficult
-    tasks. From the small and trivial, the large and complex arise.
-
-    The program source is Data. Control arises from it. The Control
-    proceeds to create new Data. The one is born from the other, the
-    other is useless without the one. This is the harmonious cycle of
-    Data and Control.
-
-    Of themselves, Data and Control are without structure. The programmers
-    of old moulded their programs out of this raw substance. Over time,
-    the amorphous Data has crystallised into data types, and the chaotic
-    Control was restricted into control structures and functions.
-
-
-    %% Progression
-
-    A beginning programmer writes his programs like an ant builds her
-    hill, one piece at a time, without thought for the bigger structure.
-    His programs will be like loose sand. They may stand for a while, but
-    growing too big they fall apart{Referring to the danger of internal
-    inconsistency and duplicated structure in unorganised code.}.
-
-    Realising this problem, the programmer will start to spend a lot of
-    time thinking about structure. His programs will be rigidly
-    structured, like rock sculptures. They are solid, but when they must
-    change, violence must be done to them{Referring to the fact that
-    structure tends to put restrictions on the evolution of a program.}.
-
-    The master programmer knows when to apply structure and when to leave
-    things in their simple form. His programs are like clay, solid yet
-    malleable.
-
-
-    %% Language
-
-    When a programming language is created, it is given syntax and
-    semantics. The syntax describes the form of the program, the semantics
-    describe the function. When the syntax is beautiful and the semantics
-    are clear, the program will be like a stately tree. When the syntax is
-    clumsy and the semantics confusing, the program will be like a bramble
-    bush.
-
-    Tzu-ssu was asked to write a program in the language called Java,
-    which takes a very primitive approach to functions. Every morning, as
-    he sat down in front of his computer, he started complaining. All day
-    he cursed, blaming the language for all that went wrong. Fu-Tzu
-    listened for a while, and then reproached him, saying 'Every language
-    has its own way. Follow its form, do not try to program as if you
-    were using another language.'
-    </pre>
-  </div>
-  <div style="display: none">
-    <textarea id="themer"></textarea>
+    <h1>Basics<h1>
+    <h2>Objects</h2>
+    <pre class="highlight">
+fruit_colors =
+  apple: 'red'
+  banana: 'yellow'
+  kiwi: 'green'</pre>
+    <h2>Functions</h2>
+    <pre class="highlight">
+square = (x) -> x*x</pre>
   </div>
 <script src=commands.js></script>
 <script src=beans.js></script>

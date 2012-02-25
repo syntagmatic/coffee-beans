@@ -27,7 +27,7 @@ do ->
     localStorage: new Store("command")
 
   window.CommandView = Backbone.View.extend
-    tagName: "div"
+    tagName: "pre"
     className: "input"
     render: ->
       code = @model.get('contents')

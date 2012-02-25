@@ -11,27 +11,28 @@ a {
 }
 pre {
   font-family: Monaco, Consolas, "Lucida Console", monospace;
+  color: black;
 }
 #console {
   font-family: Monaco, Consolas, "Lucida Console", monospace;
-  width: 600px;
+  width: 580px;
   height: 100%;
   position: fixed;
   top: 0;
 }
 #console .inner {
-  margin: 0 20px 0 0;
   height: 100%;
   background: #fff;
-  box-shadow: inset 0 -12px 12px #666;
+}
+#console pre {
+  margin: 0;
+  padding: 0;
 }
 #output {
   position: absolute;
   bottom: 0;
-  padding-bottom: 8px;
   margin-bottom:122px;
-  padding-left: 6px;
-  width: 574px;
+  width: 580px;
   overflow: auto;
 }
 #console .buttons {
@@ -58,25 +59,36 @@ pre {
   background: #fff;
   border: 2px solid #0076ad;
 }
-.input {
-  padding-top: 8px;
+#console .input {
+  padding: 14px 0 8px 8px;
 }
-.output {
-  color: #149;
-  font-weight: bold;
-  width: 550px;
-  word-wrap: break-word;
+#console .output {
+  min-width: 570px;
+  background: #eef4ff;
+  padding: 0 0 0 8px;
 }
 .error {
   color: #f33;
   font-weight: bold;
   width: 540px;
 }
-
 #main {
-  margin-left: 600px;
+  margin-left: 580px;
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 0px 12px #666;
+  padding: 4px 20px;
 }
 h1 {
-  font-size: 18px;
+  font-size: 20px;
   margin: 12px 0;
+}
+h2 {
+  font-size: 14px;
+  margin: 12px 0;
+}
+.highlight {
+  padding: 12px;
+  background: #fff;
+  border: 2px solid #d0d0d0;
 }

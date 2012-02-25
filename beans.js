@@ -24,7 +24,7 @@
   // highlight examples
   $('.highlight').each(function() {
     var code = $(this).text();
-    highlight(this, code);
+    highlight_coffee(this, code);
   });
 
   $('#output').css({'max-height': $(window).height() - 130});
@@ -118,10 +118,12 @@
   };
 
   function output_print(txt, className) {
-    var txt_node = document.createElement('div');
-    txt_node.appendChild(document.createTextNode(txt));
+    var txt_node = document.createElement('pre');
     txt_node.className = className;
     output_node.appendChild(txt_node);
+    highlight_js(txt_node, txt);
+
+    // scroll to bottom
     $('#output').animate({scrollTop: $('#output')[0].scrollHeight}, 0);
   };
 
@@ -134,9 +136,14 @@
     output_print(result, "error");
   };
 
-  function highlight(node, code) {
-    $(this).addClass('cm-s-idle');
+  function highlight_coffee(node, code) {
+    $(node).addClass('cm-s-idle');
     CodeMirror.runMode(code, "coffeescript", node);
+  };
+
+  function highlight_js(node, code) {
+    $(node).addClass('cm-s-idle');
+    CodeMirror.runMode(code, "javascript", node);
   };
 
 })();

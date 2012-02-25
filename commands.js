@@ -30,7 +30,7 @@
     localStorage: new Store("command")
   });
   return window.CommandView = Backbone.View.extend({
-    tagName: "div",
+    tagName: "pre",
     className: "input",
     render: function() {
       var code;
