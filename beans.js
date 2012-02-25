@@ -101,11 +101,7 @@
 
         if (!_.isUndefined(result)) { 
           // print result
-          try { 
-            output(result.toString());
-          } catch (error) {
-            output(result);
-          }
+          output(result);
         }
       } catch (error) {
         output_error("Javascript error: " + result);
@@ -128,6 +124,9 @@
   };
 
   window.output = function(result) {
+    if (!_.isString(result)) {
+      result = result.toString();
+    }
     //var coffee_result = Js2coffee.build(result + "");
     output_print(result, "output");
   };

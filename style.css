@@ -12,6 +12,7 @@ a {
 pre {
   font-family: Monaco, Consolas, "Lucida Console", monospace;
   color: black;
+  font-size: 12px;
 }
 #console {
   font-family: Monaco, Consolas, "Lucida Console", monospace;
@@ -58,6 +59,7 @@ pre {
   height: 120px;
   background: #fff;
   border: 2px solid #0076ad;
+  font-size: 12px;
 }
 #console .input {
   padding: 14px 0 8px 8px;

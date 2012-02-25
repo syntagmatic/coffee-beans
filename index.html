@@ -15,7 +15,7 @@
 <script src=lib/codemirror2/lib/codemirror.js></script>
 <script src=lib/codemirror2/lib/util/runmode.js></script>
 <script src=lib/codemirror2/mode/javascript/javascript.js></script>
-<script src=lib/codemirror2/mode/coffeescript/coffeescript.js></script>
+<script src=coffeescript-mode.js></script>
 <script src=lib/codemirror2/lib/util/simple-hint.js></script>
 <script src=lib/codemirror2/lib/util/javascript-hint.js></script>
 <link rel=stylesheet href=lib/codemirror2/lib/util/simple-hint.css>
@@ -30,7 +30,7 @@
   <div id="console">
     <div class="inner">
       <div id="output">
-        <pre class="output">Welcome to CoffeeBeans</pre>
+        <pre class="output" style="font-weight:bold;">Welcome to CoffeeBeans</pre>
       </div>
       <div class="buttons">
         <button id="store-code">Store</button>
@@ -76,6 +76,9 @@ map [1,2,3], (x) -> x*x          # square some numbers</pre>
       Command history is saved in local storage, so you can access past commands when you come back.
     </p>
     <h1>Basics<h1>
+    <h2>Arrays</h2>
+    <pre class="highlight">
+five = [1,2,3,4,5]</pre>
     <h2>Objects</h2>
     <pre class="highlight">
 fruit_colors =
@@ -85,6 +88,45 @@ fruit_colors =
     <h2>Functions</h2>
     <pre class="highlight">
 square = (x) -> x*x</pre>
+    <h2>Comprehensions</h2>
+    <pre class="highlight">
+output x*x for x in [1,2,3]</pre>
+    <h2>Chained Comparisons</h2>
+    <pre class="highlight">
+age = 14
+teen = 12 < age < 20</pre>
+
+    <h1>Functional Programming<h1>
+    <h2>Each</h2>
+    <p>Perform a function on each element of an array or object</p>
+    <pre class="highlight">
+each ['here', 'we', 'go!'], alert</pre>
+
+    <h2>Map</h2>
+    <p>Convert radians to degrees</p>
+    <pre class="highlight">
+pi = Math.PI
+
+angles = [pi/4, pi/2, 3*pi/8]      # data
+convert = (x) -> x*180/pi          # function to map
+
+map angles, convert</pre>
+
+    <h2>Filter</h2>
+    <p>Filter even numbers</p>
+    <pre class="highlight">
+numbers = [1,2,3,4,5,6]            # data
+even = (x) -> x % 2 == 0           # filter function
+
+filter numbers, even</pre>
+
+    <h1>Resources</h1>
+    <ul>
+      <li><a href="http://coffeescript.org/">CoffeeScript</a></li>
+      <li><a href="http://documentcloud.github.com/underscore/">Underscore.js</a></li>
+      <li><a href="http://documentcloud.github.com/backbone/">Backbone.js</a></li>
+      <li><a href="http://codemirror.net/">CodeMirror</a></li>
+    </ul>
   </div>
 <script src=commands.js></script>
 <script src=beans.js></script>
