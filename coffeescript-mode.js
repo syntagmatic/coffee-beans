@@ -15,6 +15,7 @@ CodeMirror.defineMode('coffeescript', function(conf) {
     var doubleDelimiters = new RegExp("^((\\.\\.)|(\\+=)|(\\-=)|(\\*=)|(%=)|(/=)|(&=)|(\\|=)|(\\^=))");
     var tripleDelimiters = new RegExp("^((\\.\\.\\.)|(//=)|(>>=)|(<<=)|(\\*\\*=))");
     var identifiers = new RegExp("^[_A-Za-z$][_A-Za-z$0-9]*");
+    var assignment = /([\w]+)\s*(?=\=)(?!\=\=)/g;
 
     var wordOperators = wordRegexp(['and', 'or', 'not',
                                     'is', 'isnt', 'in',
@@ -128,6 +129,11 @@ CodeMirror.defineMode('coffeescript', function(conf) {
             } else {
                 stream.backUp(1);
             }
+        }
+
+        // Handle assignment
+        if (stream.match(assignment)) {
+            return 'def';
         }
 
         // Handle operators and delimiters
