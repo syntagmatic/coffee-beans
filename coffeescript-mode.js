@@ -15,8 +15,8 @@ CodeMirror.defineMode('coffeescript', function(conf) {
     var doubleDelimiters = new RegExp("^((\\.\\.)|(\\+=)|(\\-=)|(\\*=)|(%=)|(/=)|(&=)|(\\|=)|(\\^=))");
     var tripleDelimiters = new RegExp("^((\\.\\.\\.)|(//=)|(>>=)|(<<=)|(\\*\\*=))");
     var identifiers = new RegExp("^[_A-Za-z$][_A-Za-z$0-9]*");
-    var assignment = /([\w]+)\s*(?=\=)(?!\=\=)/g;
-    var args = /^(\([\w,\. ]*\))\s*(?=\->|\=>)/g;
+    var assignment = /([\w]+)\s*(?=\=|\:)(?!\=\=)/g;
+    var args = /^(\([\w,\.\@ ]*\))\s*(?=\->|\=>)/g;
 
     var wordOperators = wordRegexp(['and', 'or', 'not',
                                     'is', 'isnt', 'in',
@@ -24,7 +24,7 @@ CodeMirror.defineMode('coffeescript', function(conf) {
     var indentKeywords = ['for', 'while', 'loop', 'if', 'unless', 'else',
                           'switch', 'try', 'catch', 'finally', 'class'];
     var commonKeywords = ['break', 'by', 'continue', 'debugger', 'delete',
-                          'do', 'in', 'of', 'new', 'return', 'then',
+                          'do', 'extends', 'in', 'of', 'new', 'return', 'then',
                           'this', 'throw', 'when', 'until'];
     var reserved = ['case', 'default', 'function', 'var', 'void', 'with',
                     'const', 'let', 'enum', 'export', 'import', 'native',
@@ -37,7 +37,7 @@ CodeMirror.defineMode('coffeescript', function(conf) {
 
     var stringPrefixes = new RegExp("^('{3}|\"{3}|['\"])");
     var regexPrefixes = new RegExp("^(/{3}|/)");
-    var commonConstants = ['Infinity', 'NaN', 'undefined', 'null', 'true', 'false', 'on', 'off', 'yes', 'no'];
+    var commonConstants = ['Infinity', 'NaN', 'undefined', 'null', 'true', 'false', 'on', 'off', 'yes', 'no', 'super'];
     var constants = wordRegexp(commonConstants);
 
     // Tokenizers
