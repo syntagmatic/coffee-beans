@@ -48,35 +48,53 @@
     A <a href="http://coffeescript.org/">CoffeeScript</a> console. Here's the <a href="https://github.com/syntagmatic/coffee-beans">source</a>.
     </p>
     <p>
-      <a href="http://documentcloud.github.com/underscore/">Underscore functions</a> are available in the global namespace. Some examples:
+      The code editor is on the bottom left.
     </p>
-    <pre class="highlight">
-range 10                         # create a range
-
-isNumber 5                       # is 5 a number (it is)
-
-size {a:1, b:2}                  # size of object or array
-
-keys Backbone                    # get Backbone's properties
-
-sort uniq [4,2,8,4,1,2]          # unique elements, sorted
-
-map [1,2,3], (x) -> x*x          # square some numbers</pre>
-    <p>
-      The code editor is on the bottom left. These are the keyboard shortcuts:
-    </p>
-    <ul>
-      <li><strong>Enter:</strong> Run command</li>
-      <li><strong>Shift+Enter:</strong> New line</li>
-      <li><strong>Ctrl+Space:</strong> Autocomplete</li>
-      <li><strong>Tab:</strong> Indent</li>
-      <li><strong>Up:</strong> Previous command</li>
-      <li><strong>Down:</strong> Next command</li>
-    </ul>
+    <div>
+      <div class="half">
+        <h2>Keyboard Shortcuts</h2>
+        <table class="shortcuts">
+          <tr>
+            <td>Enter</td>
+            <td>Run code</td>
+          </tr>
+          <tr>
+            <td>Tab</td>
+            <td>Autocomplete</td>
+          </tr>
+          <tr>
+            <td>Shift-Enter</td>
+            <td>New Line</td>
+          </tr>
+          <tr>
+            <td>Shift &rarr;</td>
+            <td>Indent</td>
+          </tr>
+          <tr>
+            <td>Shift &larr;</td>
+            <td>Outdent</td>
+          </tr>
+        </table>
+      </div>
+      <div class="half">
+        <h2>History</h2>
+        <table class="shortcuts">
+          <tr>
+            <td>Up</td>
+            <td>Previous command</td>
+          </tr>
+          <tr>
+            <td>Down</td>
+            <td>Next command</td>
+          </tr>
+        </table>
+      </div>
+      <div class="clear"></div>
+    </div>
     <p>
       Command history is saved in local storage, so you can access past commands when you come back.
     </p>
-    <h1>Basics<h1>
+    <h1>Basics</h1>
     <h2>Arrays</h2>
     <pre class="highlight">
 five = [1,2,3,4,5]</pre>
@@ -97,7 +115,7 @@ output x*x for x in [1,2,3]</pre>
 age = 14
 teen = 12 < age < 20</pre>
 
-    <h1>Functional Programming<h1>
+    <h1>Functional Programming</h1>
     <h2>Each</h2>
     <p>Perform a function on each element of an array or object</p>
     <pre class="highlight">

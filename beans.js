@@ -1,5 +1,6 @@
 (function() {
-  globalize(_);
+  // globalize underscore
+  _.extend(window, _);
 
   var commands = new Commands();
   commands.fetch();
@@ -15,7 +16,9 @@
       "Enter": go,
       "Up": up,
       "Down": down,
-      "Ctrl-Space": autocomplete
+      "Tab": autocomplete,
+      "Shift-Right": CodeMirror.commands.indentMore,
+      "Shift-Left": CodeMirror.commands.indentLess
     }
   });
 
@@ -31,12 +34,6 @@
   $(window).bind("resize", function() {
     $('#output').css({'max-height': $(window).height() - 130});
   });
-
-  function globalize(obj) {
-    for (key in obj) {
-      window[key] = obj[key];
-    }
-  };
 
   function autocomplete(cm) {
     CodeMirror.simpleHint(cm, CodeMirror.coffeescriptHint);

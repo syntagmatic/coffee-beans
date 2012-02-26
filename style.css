@@ -1,3 +1,50 @@
+/* meyer reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* styles */
+
 body {
   margin: 0;
   padding: 0;
@@ -6,8 +53,20 @@ body {
   font-size: 14px;
   font-family: "Helvetica Neue", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
 }
+p {
+  line-height: 1.3em;
+  margin: 14px 0;
+}
 a {
   color: #191933;
+}
+ul {
+  list-style-type: square;
+  margin-left: 16px;
+  color: #d0d0d0;
+}
+li {
+  line-height: 1.8em;
 }
 pre {
   font-family: Monaco, Consolas, "Lucida Console", monospace;
@@ -20,6 +79,7 @@ pre {
   height: 100%;
   position: fixed;
   top: 0;
+  z-index: 10;
 }
 #console .inner {
   height: 100%;
@@ -56,18 +116,28 @@ pre {
   margin-bottom: 2px;
 }
 .CodeMirror-scroll {
-  height: 120px;
+  height: 100px;
   background: #fff;
-  border: 2px solid #0076ad;
+  margin: 0 20px 8px 20px;
+  padding: 4px 8px;
+  border: 1px solid #0076ad;
+  box-shadow: 0 0 3px #aaa;
   font-size: 12px;
+  resize: both;
+}
+.CodeMirror-lines {
+  padding: .4em 0;
 }
 #console .input {
-  padding: 14px 0 8px 8px;
+  margin: 8px 20px;
+  padding: 8px;
+  border: 1px solid #bbb;
+  box-shadow: 0 0 3px #bbb;
 }
 #console .output {
-  min-width: 570px;
-  background: #eef4ff;
-  padding: 0 0 0 8px;
+  min-width: 546px;
+  padding: 8px;
+  margin: 9px 17px;
 }
 .error {
   color: #f33;
@@ -77,20 +147,49 @@ pre {
 #main {
   margin-left: 580px;
   position: relative;
+  min-width: 400px;
   z-index: 5;
-  box-shadow: 0 0px 12px #666;
   padding: 4px 20px;
+  border-left: 1px solid #d0d0d0;
+  box-shadow: inset 0 0 8px #ccc;
 }
 h1 {
-  font-size: 20px;
-  margin: 12px 0;
+  font-weight: bold;
+  font-size: 16px;
+  border-bottom: 1px solid #d0d0d0;
+  margin: 24px 0 12px;
 }
 h2 {
-  font-size: 14px;
-  margin: 12px 0;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 24px 0 12px;
 }
 .highlight {
   padding: 12px;
   background: #fff;
-  border: 2px solid #d0d0d0;
+  border: 1px solid #d0d0d0;
+}
+.shortcuts {
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  cellpadding: 0;
+  cellspacing: 0;
+}
+.shortcuts td {
+  border: 1px solid #d0d0d0;
+  padding: 8px 14px;
+}
+.shortcuts td:first-child {
+  font-style: italic;
+  text-align: right;
+}
+.half {
+  float: left;
+  padding-right: 20px;
+}
+.half h2 {
+  margin-top: 10px;
+}
+.clear {
+  clear: both;
 }
