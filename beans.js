@@ -11,6 +11,7 @@
   window.editor = CodeMirror.fromTextArea(document.getElementById("input"), {
     mode: 'coffeescript',
     theme: 'idle',
+    onChange: test_compile,
     extraKeys: {
       "Shift-Enter": CodeMirror.commands.newlineAndIndent,
       "Enter": go,
@@ -37,6 +38,15 @@
 
   function autocomplete(cm) {
     CodeMirror.simpleHint(cm, CodeMirror.coffeescriptHint);
+  }
+
+  function test_compile(cm) {
+    try {
+      CoffeeScript.compile(editor.getValue());
+      $('#coffee-error').hide();
+    } catch (err) {
+      $('#coffee-error').text(err.message).show();
+    }
   }
 
   function up(cm) {
