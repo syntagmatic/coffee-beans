@@ -24,9 +24,6 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
-body {
-  line-height: 1;
-}
 ol, ul {
   list-style: none;
 }
@@ -72,6 +69,7 @@ pre {
   font-family: Monaco, Consolas, "Lucida Console", monospace;
   color: black;
   font-size: 12px;
+  line-height: 1.3em;
 }
 #console {
   font-family: Monaco, Consolas, "Lucida Console", monospace;
@@ -121,7 +119,7 @@ pre {
   margin: 0 20px 8px 20px;
   padding: 4px 8px;
   border: 1px solid #0076ad;
-  box-shadow: 0 0 3px #aaa;
+  box-shadow: 0 0 3px #bbb;
   font-size: 12px;
   resize: both;
 }
@@ -132,7 +130,7 @@ pre {
   margin: 8px 20px;
   padding: 8px;
   border: 1px solid #bbb;
-  box-shadow: 0 0 3px #bbb;
+  box-shadow: 0 0 3px #ddd;
 }
 #console .output {
   min-width: 546px;
