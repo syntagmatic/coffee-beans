@@ -111,10 +111,8 @@
     jscode = command.compile();
 
     if (jscode.type == "success") {
-      // with underscore
-      jscode = "with (_) {\n" + jscode.result + "}";
       try {
-        var result = eval.call(null, jscode);
+        var result = eval.call(null, jscode.result);
 
         if (!_.isUndefined(result)) { 
           // print result
