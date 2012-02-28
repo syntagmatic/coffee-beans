@@ -11,6 +11,7 @@
 <script src="lib/backbone.js"></script>
 <script src="lib/backbone-localstorage.js"></script>
 <script src="lib/js2coffee.min.js"></script>
+<script src="lib/require.js"></script>
 
 <script src=lib/codemirror2/lib/codemirror.js></script>
 <script src=lib/codemirror2/lib/util/runmode.js></script>
@@ -145,6 +146,15 @@ numbers = [1,2,3,4,5,6]            # data
 even = (x) -> x % 2 == 0           # filter function
 
 filter numbers, even</pre>
+
+    <h2>DelayedOp</h2>
+    <p>See this <a href="http://www.reddit.com/r/coffeescript/comments/pkk7u/delayedop_five_handy_tiny_lines_of_coffeescript/">discussion</a> on usage.</p>
+    <pre class="highlight">
+class DelayedOp
+  constructor: (@callback) -> @count = 1
+  wait: => @count++
+  ok: => @callback() unless --@count
+  ready: => @ok()</pre>
 
     <h1>Resources</h1>
     <ul>
