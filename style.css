@@ -109,15 +109,33 @@ pre {
 #coffee-error {
   display: none;
   position: absolute;
-  bottom: 124px;
-  border: 1px solid #d0d0d0;
+  bottom: 123px;
   font-size: 10px;
   background: #f6f6f6;
-  color: #c00;
+  color: #999;
   margin: 0 20px;
-  padding: 2px 8px;
+  padding: 3px 8px 1px;
   width: 522px;
   text-transform: uppercase;
+  border-radius: 4px;
+}
+#coffee-error.tried {
+  font-weight: bold;
+  background: #e22;
+  color: #fff;
+}
+#coffee-error .bang {
+  float: right;
+  color: #c11;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 12px;
+}
+#coffee-error.tried .bang {
+  color: #fff;
+}
+#coffee-error:hover {
+  color: #000;
 }
 #input-wrap {
   position: absolute;
@@ -135,6 +153,7 @@ pre {
   box-shadow: 0 0 3px #bbb;
   font-size: 12px;
   resize: both;
+  border-radius: 4px;
 }
 .CodeMirror-lines {
   padding: .4em 0;
@@ -142,8 +161,9 @@ pre {
 #console .input {
   margin: 8px 20px;
   padding: 8px;
-  border: 1px solid #bbb;
+  border: 1px solid #c8c8c8;
   box-shadow: 0 0 3px #ddd;
+  border-radius: 4px;
 }
 #console .output {
   min-width: 532px;
@@ -151,12 +171,11 @@ pre {
   margin: 9px 17px;
 }
 #console .error {
-  color: #f33;
+  color: #e11;
   font-weight: bold;
   margin: 8px 20px;
   padding: 8px;
-  border: 1px solid #f88;
-  background: #fee;
+  border-radius: 4px;
 }
 #main {
   margin-left: 580px;
@@ -182,6 +201,7 @@ h2 {
   padding: 12px;
   background: #fff;
   border: 1px solid #d0d0d0;
+  border-radius: 4px;
 }
 .shortcuts {
   background: #fff;

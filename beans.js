@@ -5,6 +5,7 @@
   var commands = new Commands();
   commands.fetch();
   var curr = commands.size();  // current command
+  var error_state = false;
 
   var output_node = document.getElementById('output');
 
@@ -42,10 +43,14 @@
 
   function test_compile(cm) {
     try {
+      error_state = false;
       CoffeeScript.compile(editor.getValue());
       $('#coffee-error').hide();
     } catch (err) {
-      $('#coffee-error').text(err.message).show();
+      error_state = true;
+      $('#coffee-error').removeClass('tried');
+      $('#coffee-error #compile-error').text(err.message);
+      $('#coffee-error').show();
     }
   }
 
@@ -88,6 +93,11 @@
   };
 
   function go() {
+    if (error_state) {
+      $('#coffee-error').addClass('tried');
+      return;
+    }
+
     var code = editor.getValue();
     editor.setValue("");
 
@@ -124,7 +134,12 @@
     var txt_node = document.createElement('pre');
     txt_node.className = className;
     output_node.appendChild(txt_node);
-    highlight_js(txt_node, txt);
+
+    if (className == 'input' || className == 'output') {
+      highlight_js(txt_node, txt);
+    } else {
+      $(txt_node).text(txt);
+    }
 
     // scroll to bottom
     $('#output').animate({scrollTop: $('#output')[0].scrollHeight}, 0);
