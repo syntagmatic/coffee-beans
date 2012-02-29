@@ -240,3 +240,6 @@ svg {
   border: 1px solid #d0d0d0;
   float: left;
 }
+em {
+  font-style: italic;
+}

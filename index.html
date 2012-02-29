@@ -105,6 +105,28 @@
     <p>
       Eventually there will be a tutorial here for beginning programmers. For now, there are a few notes and code examples.
     </p>
+    <h2>Awww...</h2>
+    <p>Let's get some adorable pictures from Reddit:</p>
+    <pre class="highlight">
+$.getJSON 'http://www.reddit.com/r/aww.json?jsonp=?', (data) ->
+  output pretty data
+  window.aww = pluck(data['data']['children'], 'data')
+</pre>
+    <p>When the data loads, it'll fill up the console. The part that we need, data about the links, will be saved to the global variable <em>aww</em>. Let's take a look at the first link:</p>
+    <pre class="highlight">pretty aww[0]</pre>
+    <p>The thumbnail property probably has the highest density of cuteness, so let's make a function that turns <em>aww[0]</em> into an image:</p>
+    <pre class="highlight">
+thumbnail = (obj) ->
+  html "&lt;img src='#{obj.thumbnail}'/&gt;"
+</pre>
+    <p>Let's test it out:</p>
+    <pre class="highlight">
+thumbnail aww[0]
+</pre>
+    <p>If a picture appeared, get ready for cuteness overload. Let's use <em>each</em> to see them all!</p>
+    <pre class="highlight">
+each aww, (obj) -> output thumbnail obj
+</pre>
     <h2>Events</h2>
     <p>A module which provides named <a href="http://documentcloud.github.com/backbone/#Events">events</a> on an object.</p>
     <p>First, make a button:</p>
@@ -176,10 +198,15 @@ fruit_colors =
   kiwi: 'green'</pre>
     <h2>Functions</h2>
     <pre class="highlight">
-square = (x) -> x*x</pre>
+# define a function
+square = (x) -> x*x
+
+# call the function
+square(5)
+</pre>
     <h2>Comprehensions</h2>
     <pre class="highlight">
-output x*x for x in [1,2,3]</pre>
+three_squares = (x*x for x in [1,2,3])</pre>
     <h2>Chained Comparisons</h2>
     <pre class="highlight">
 age = 14

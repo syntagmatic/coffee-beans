@@ -182,8 +182,8 @@
         result = "undefined";
         break;
       case "element":
-        $(output_node).append(result);
-        toBottom();
+        $(output_node).append(result, function() {);
+        setTimeout(function() { toBottom(); }, 30);
         return;
         break;
       default:
@@ -230,6 +230,10 @@ function type(object) {
 
 function html(str) {
   return $(str)[0];
+};
+
+function pretty(obj) {
+  return JSON.stringify(obj, undefined, 2);
 };
 
 function repeat(func, interval) {
