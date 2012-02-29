@@ -230,3 +230,7 @@ h2 {
 .clear {
   clear: both;
 }
+svg {
+  height: 100px;
+  width: 100%;
+}
