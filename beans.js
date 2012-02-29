@@ -182,8 +182,8 @@
         result = "undefined";
         break;
       case "element":
-        $(output_node).append(result, function() {);
-        setTimeout(function() { toBottom(); }, 30);
+        $(output_node).append(result);
+        setTimeout(function() { toBottom(); }, 40);
         return;
         break;
       default:
