@@ -102,7 +102,6 @@
     <p>
       Command history is saved in local storage, so you can access past commands when you come back.
     </p>
-    <h1>Basics</h1>
     <h2>Arrays</h2>
     <pre class="highlight">
 five = [1,2,3,4,5]</pre>
@@ -123,27 +122,27 @@ output x*x for x in [1,2,3]</pre>
 age = 14
 teen = 12 < age < 20</pre>
 
-    <h1>Functional Programming</h1>
-    <h2>Each</h2>
+    <h1>Functions</h1>
+    <h2>each</h2>
     <p>Perform a function on each element of an array or object</p>
     <pre class="highlight">
 each ['here', 'we', 'go!'], alert</pre>
 
-    <h2>Map</h2>
-    <p>Convert radians to degrees</p>
+    <h2>map</h2>
+    <p></p>
     <pre class="highlight">
 pi = Math.PI
 
 angles = [pi/4, 3*pi/8, pi/2]      # data
-convert = (x) -> x*180/pi          # function to map
+convert = (x) -> x*180/pi          # converts radians to degrees
 
 map angles, convert</pre>
 
-    <h2>Filter</h2>
+    <h2>filter</h2>
     <p>Filter even numbers</p>
     <pre class="highlight">
 numbers = [1,2,3,4,5,6]            # data
-even = (x) -> x % 2 == 0           # filter function
+even = (x) -> x % 2 == 0           # true for even number
 
 filter numbers, even</pre>
 
@@ -162,6 +161,7 @@ class DelayedOp
       <li><a href="http://documentcloud.github.com/underscore/">Underscore.js</a></li>
       <li><a href="http://documentcloud.github.com/backbone/">Backbone.js</a></li>
       <li><a href="http://codemirror.net/">CodeMirror</a></li>
+      <li><a href="http://eloquentjavascript.net/">Eloquent JavaScript</a></li>
     </ul>
   </div>
 <script src=commands.js></script>
