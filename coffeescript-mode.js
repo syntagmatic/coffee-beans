@@ -17,6 +17,7 @@ CodeMirror.defineMode('coffeescript', function(conf) {
     var identifiers = new RegExp("^[_A-Za-z$][_A-Za-z$0-9]*");
     var assignment = /^([\w]+)\s*(?=\=|\:)(?!\=\=)/;
     var args = /^(\([\w,\.\@ ]*\))\s*(?=\->|\=>)/;
+    var thisvar = /^\@([\w]+)/;
 
     var wordOperators = wordRegexp(['and', 'or', 'not',
                                     'is', 'isnt', 'in',
@@ -142,6 +143,10 @@ CodeMirror.defineMode('coffeescript', function(conf) {
             return 'argument';
         }
 
+        // Handle @vars
+        if (stream.match(thisvar)) {
+            return 'thisvar';
+        }
         // Handle operators and delimiters
         if (stream.match(tripleDelimiters) || stream.match(doubleDelimiters)) {
             return 'punctuation';
