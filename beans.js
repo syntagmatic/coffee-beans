@@ -32,9 +32,9 @@
     highlight_coffee(this, code);
   });
 
-  $('#output').css({'max-height': $(window).height() - 130});
+  $('#output').css({'max-height': $(window).height() - 126});
   $(window).bind("resize", function() {
-    $('#output').css({'max-height': $(window).height() - 130});
+    $('#output').css({'max-height': $(window).height() - 126});
   });
 
   function autocomplete(cm) {
