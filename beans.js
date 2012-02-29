@@ -121,10 +121,8 @@
       try {
         var result = eval.call(null, jscode.result);
 
-        if (!_.isUndefined(result)) { 
-          // print result
-          output(result);
-        }
+      // print result
+        output(result);
       } catch (error) {
         output_error("Javascript error: " + result);
       }
@@ -180,6 +178,9 @@
       case "string":
         result = '"' + result + '"';
         break;
+      case "undefined":
+        result = "undefined";
+        break;
       case "element":
         $(output_node).append(result);
         toBottom();
@@ -219,6 +220,7 @@ function type(object) {
   if (_.isNaN(object)) return "NaN";
   if (_.isDate(object)) return "date";
   if (_.isArguments(object)) return "arguments";
+  if (_.isUndefined(object)) return "undefined";
   if (_.isRegExp(object)) {
     return "RegExp";
   } else {
@@ -228,4 +230,11 @@ function type(object) {
 
 function html(str) {
   return $(str)[0];
+};
+
+function repeat(func, interval) {
+  func();
+  setTimeout(function() {
+    repeat(func, interval);
+  }, interval);
 };

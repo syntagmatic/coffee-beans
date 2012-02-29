@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -132,21 +132,39 @@ phone.on "ring", ->
     <pre class="highlight">
 Sidebar = Model.extend
   color: (new_color) ->
-    @set
-      color: new_color
+    @set {color: new_color}
 
 sidebar = new Sidebar;
 
 sidebar.on 'change:color', (model, color) ->
-  $('#main').css
-    background: color
+  $('#main').css {background: color}
 </pre>
     <p>Now pick a good <a href="http://www.colorschemer.com/online.html">color</a> for the sidebar.</p>
     <pre class="highlight">
 sidebar.color '#FFCC33'
 </pre>
 
+    <h2>SVG</h2>
+    <p>Print an SVG shape.</p>
+    <pre class="highlight">
+html "&lt;svg height=100&gt;&lt;circle cx=50 cy=50 r=40 fill=violet&gt;&lt;/svg&gt;"</pre>
 
+    <h2>Colored Output</h2>
+    <p>Print out colored lines.</p>
+    <pre class="highlight">
+color_output = (text, color) ->
+  $('#output').append "&lt;pre style=&#x27;color:#{color}&#x27;&gt;#{text}&lt;&#x2F;pre&gt;"
+  return   # no need to return anything
+
+green_output = (text) -> color_output(text, '#00bd12')
+red_output   = (text) -> color_output(text, '#bd1107')
+pink_output  = (text) -> color_output(text, '#ff3366')
+
+green_output "eggs and ham"
+red_output "danger will robinson"
+pink_output "happy to be here"
+</pre
+>
     <h2>Arrays</h2>
     <pre class="highlight">
 five = [1,2,3,4,5]</pre>
@@ -166,12 +184,6 @@ output x*x for x in [1,2,3]</pre>
     <pre class="highlight">
 age = 14
 teen = 12 < age < 20</pre>
-
-    <h2>SVG</h2>
-    <p>Print an SVG shape.</p>
-    <pre class="highlight">
-html "&lt;svg height=100&gt;&lt;circle cx=50 cy=50 r=40 fill=violet&gt;&lt;/svg&gt;"</pre>
-
     <h2>type</h2>
     <p>Get the type of an object</p>
     <pre class="highlight">
@@ -220,11 +232,17 @@ class DelayedOp
       <li><a href="http://codemirror.net/">CodeMirror</a></li>
       <li><a href="http://eloquentjavascript.net/">Eloquent JavaScript</a></li>
     </ul>
-    <div class="beans-video">
-      <iframe width="100%" height="345" src="http://www.youtube.com/embed/SdL6dzWvm5M" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="beans-video">
-      <iframe width="100%" height="345" src="http://www.youtube.com/embed/fvsKkwbhfs8" frameborder="0" allowfullscreen></iframe>
+    <div>
+      <div class="beans-video">
+        <iframe width="465" height="345" src="http://www.youtube.com/embed/0RTj3OQzLZk" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="beans-video">
+        <iframe width="465" height="345" src="http://www.youtube.com/embed/SdL6dzWvm5M" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="beans-video">
+        <iframe width="465" height="345" src="http://www.youtube.com/embed/fvsKkwbhfs8" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="clear"></div>
     </div>
   </div>
 <script src=commands.js></script>

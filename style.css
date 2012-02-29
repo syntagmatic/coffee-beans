@@ -238,4 +238,5 @@ svg {
   margin: 12px 0;
   background: #eee;
   border: 1px solid #d0d0d0;
+  float: left;
 }
