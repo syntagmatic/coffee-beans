@@ -144,9 +144,35 @@
   };
 
   window.output = function(result) {
-    if (!_.isString(result)) {
-      result = result.toString();
+
+    switch (type(result)) {
+      case "array":
+        result = JSON.stringify(result);
+        break;
+      case "function":
+        result = result.toString();
+        break;
+      case "object":
+        try {
+          result = JSON.stringify(result);
+        } catch (err) {
+          output_error("Print error: " + err.message);
+          return;
+        }
+        break;
+      case "number":
+        result = result.toString();
+        break;
+      case "boolean":
+        result = result.toString();
+        break;
+      case "string":
+        result = result;
+        break;
+      default:
+        result = result.toString();
     }
+
     //var coffee_result = Js2coffee.build(result + "");
     output_print(result, "output");
   };
@@ -163,6 +189,21 @@
   function highlight_js(node, code) {
     $(node).addClass('cm-s-idle');
     CodeMirror.runMode(code, "javascript", node);
+  };
+
+ function type(object) {
+    if (_.isFunction(object)) return "function";
+    if (_.isArray(object)) return "array";
+    if (_.isElement(object)) return "element";
+    if (_.isNull(object)) return "null";
+    if (_.isNaN(object)) return "NaN";
+    if (_.isDate(object)) return "date";
+    if (_.isArguments(object)) return "arguments";
+    if (_.isRegExp(object)) {
+      return "RegExp";
+    } else {
+      return typeof object;
+    }
   };
 
 })();
