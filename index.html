@@ -102,6 +102,51 @@
     <p>
       Command history is saved in local storage, so you can access past commands when you come back.
     </p>
+    <p>
+      Eventually there will be a tutorial here for beginning programmers. For now, there are a few notes and code examples.
+    </p>
+    <h2>Events</h2>
+    <p>A module which provides named <a href="http://documentcloud.github.com/backbone/#Events">events</a> on an object.</p>
+    <p>First, make a button:</p>
+    <pre class="highlight">
+html "&lt;button id=&#x27;my-phone&#x27;&gt;Call Me!&lt;&#x2F;button&gt;"
+</pre>
+    <p>Now trigger an event when the button is clicked:</p>
+    <pre class="highlight">
+phone = {}
+
+extend phone, Events
+
+# bind the phone's "ring" event to the button's "click"
+$('#my-phone').on 'click', ->
+  phone.trigger "ring"
+
+# print a message when the phone rings
+phone.on "ring", ->
+  output "someone's calling..."
+</pre>
+    <p>Click the button!</p>
+
+    <h2>Models</h2>
+    <p>A <a href="http://documentcloud.github.com/backbone/#Model">Model</a> is a container for interactive data. Let's make a model to play with this sidebar's color.</p>
+    <pre class="highlight">
+Sidebar = Model.extend
+  color: (new_color) ->
+    @set
+      color: new_color
+
+sidebar = new Sidebar;
+
+sidebar.on 'change:color', (model, color) ->
+  $('#main').css
+    background: color
+</pre>
+    <p>Now pick a good <a href="http://www.colorschemer.com/online.html">color</a> for the sidebar.</p>
+    <pre class="highlight">
+sidebar.color '#FFCC33'
+</pre>
+
+
     <h2>Arrays</h2>
     <pre class="highlight">
 five = [1,2,3,4,5]</pre>
@@ -175,6 +220,12 @@ class DelayedOp
       <li><a href="http://codemirror.net/">CodeMirror</a></li>
       <li><a href="http://eloquentjavascript.net/">Eloquent JavaScript</a></li>
     </ul>
+    <div class="beans-video">
+      <iframe width="100%" height="345" src="http://www.youtube.com/embed/SdL6dzWvm5M" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="beans-video">
+      <iframe width="100%" height="345" src="http://www.youtube.com/embed/fvsKkwbhfs8" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
 <script src=commands.js></script>
 <script src=beans.js></script>

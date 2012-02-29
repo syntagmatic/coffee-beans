@@ -1,6 +1,13 @@
 (function() {
   // globalize underscore
   _.extend(window, _);
+  _.extend(window, {
+    Events: Backbone.Events,
+    Model: Backbone.Model,
+    Collection: Backbone.Collection,
+    Router: Backbone.Router,
+    View: Backbone.View
+  });
 
   var commands = new Commands();
   commands.fetch();
