@@ -45,7 +45,7 @@ table {
 body {
   margin: 0;
   padding: 0;
-  background: #f6f6f6;
+  background: #f6f6f6 url('img/background.png');
   color: #333;
   font-size: 14px;
   font-family: "Helvetica Neue", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
