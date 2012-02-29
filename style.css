@@ -81,6 +81,7 @@ pre {
 }
 #console .inner {
   height: 100%;
+  padding: 0 20px;
   background: #fff;
 }
 #console pre {
@@ -89,10 +90,11 @@ pre {
 }
 #output {
   position: absolute;
+  overflow-y: auto;
+  overflow-x: hidden;
   bottom: 0;
+  padding-right: 20px;
   margin-bottom:122px;
-  width: 580px;
-  overflow: auto;
 }
 #console .buttons {
   display: none;
@@ -113,7 +115,6 @@ pre {
   font-size: 10px;
   background: #f6f6f6;
   color: #999;
-  margin: 0 20px;
   padding: 3px 8px 1px;
   width: 522px;
   text-transform: uppercase;
@@ -140,14 +141,14 @@ pre {
 #input-wrap {
   position: absolute;
   bottom: 0px;
-  width: 580px;
+  width: 538px;
   height: 120px;
   margin-bottom: 2px;
 }
 .CodeMirror-scroll {
   height: 100px;
   background: #fff;
-  margin: 0 20px 8px 20px;
+  margin: 0 0 8px 0;
   padding: 4px 8px;
   border: 1px solid #0076ad;
   box-shadow: 0 0 3px #bbb;
@@ -159,21 +160,23 @@ pre {
   padding: .4em 0;
 }
 #console .input {
-  margin: 8px 20px;
+  width: 522px;
+  margin: 8px 0;
   padding: 8px;
   border: 1px solid #c8c8c8;
   box-shadow: 0 0 3px #ddd;
   border-radius: 4px;
 }
 #console .output {
-  min-width: 532px;
+  width: 522px;
+  overflow: auto;
   padding: 8px;
-  margin: 9px 17px;
+  margin: 9px 0;
 }
 #console .error {
   color: #e11;
   font-weight: bold;
-  margin: 8px 20px;
+  margin: 8px 0;
   padding: 8px;
   border-radius: 4px;
 }

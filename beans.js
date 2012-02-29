@@ -139,6 +139,10 @@
       $(txt_node).text(txt);
     }
 
+    toBottom();
+  };
+
+  function toBottom() {
     // scroll to bottom
     $('#output').animate({scrollTop: $('#output')[0].scrollHeight}, 0);
   };
@@ -167,7 +171,12 @@
         result = result.toString();
         break;
       case "string":
-        result = result;
+        result = '"' + result + '"';
+        break;
+      case "element":
+        $(output_node).append(result);
+        toBottom();
+        return;
         break;
       default:
         result = result.toString();
@@ -191,19 +200,25 @@
     CodeMirror.runMode(code, "javascript", node);
   };
 
- function type(object) {
-    if (_.isFunction(object)) return "function";
-    if (_.isArray(object)) return "array";
-    if (_.isElement(object)) return "element";
-    if (_.isNull(object)) return "null";
-    if (_.isNaN(object)) return "NaN";
-    if (_.isDate(object)) return "date";
-    if (_.isArguments(object)) return "arguments";
-    if (_.isRegExp(object)) {
-      return "RegExp";
-    } else {
-      return typeof object;
-    }
-  };
-
 })();
+
+/* global functions */
+
+function type(object) {
+  if (_.isFunction(object)) return "function";
+  if (_.isArray(object)) return "array";
+  if (_.isElement(object)) return "element";
+  if (_.isNull(object)) return "null";
+  if (_.isNaN(object)) return "NaN";
+  if (_.isDate(object)) return "date";
+  if (_.isArguments(object)) return "arguments";
+  if (_.isRegExp(object)) {
+    return "RegExp";
+  } else {
+    return typeof object;
+  }
+};
+
+function html(str) {
+  return $(str)[0];
+};
