@@ -108,7 +108,7 @@
     <h2>Awww...</h2>
     <p>Let's get some adorable pictures from Reddit:</p>
     <pre class="highlight">
-$.getJSON 'http://www.reddit.com/r/aww.json?jsonp=?', (data) ->
+json 'http://www.reddit.com/r/aww.json?jsonp=?', (data) ->
   output pretty data
   window.aww = pluck(data['data']['children'], 'data')
 </pre>
@@ -175,7 +175,7 @@ html "&lt;svg height=100&gt;&lt;circle cx=50 cy=50 r=40 fill=violet&gt;&lt;/svg&
     <p>Print out colored lines.</p>
     <pre class="highlight">
 color_output = (text, color) ->
-  $('#output').append "&lt;pre style=&#x27;color:#{color}&#x27;&gt;#{text}&lt;&#x2F;pre&gt;"
+  output html "&lt;pre style=&#x27;color:#{color}&#x27;&gt;#{text}&lt;&#x2F;pre&gt;"
   return   # no need to return anything
 
 green_output = (text) -> color_output(text, '#00bd12')

@@ -6,7 +6,8 @@
     Model: Backbone.Model,
     Collection: Backbone.Collection,
     Router: Backbone.Router,
-    View: Backbone.View
+    View: Backbone.View,
+    json: $.getJSON
   });
 
   var commands = new Commands();
