@@ -181,6 +181,18 @@
       case "undefined":
         result = "undefined";
         break;
+      case "null":
+        result = "null";
+        break;
+      case "NaN":
+        result = "NaN";
+        break;
+      case "date":
+        result = result.toString();
+        break;
+      case "RegExp":
+        result = result.toString();
+        break;
       case "element":
         $(output_node).append(result);
         setTimeout(function() { toBottom(); }, 40);
