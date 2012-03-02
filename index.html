@@ -53,7 +53,7 @@
   <div id="main">
     <h1>CoffeeBeans</h1>
     <p>
-    A <a href="http://coffeescript.org/">CoffeeScript</a> console. Here's the <a href="https://github.com/syntagmatic/coffee-beans">source</a>.
+      A <a href="http://coffeescript.org/">CoffeeScript</a> console. Here's the <a href="https://github.com/syntagmatic/coffee-beans">source</a>.
     </p>
     <p>
       The code editor is on the bottom left.
@@ -100,25 +100,16 @@
       <div class="clear"></div>
     </div>
     <p>
-      Command history is saved in local storage, so you can access past commands when you come back.
-    </p>
-    <p>
-      Use your browser's javascript console to view data. Or use <a href="javascript:(function(F,i,r,e,b,u,g,L,I,T,E){if(F.getElementById(b))return;E=F[i+'NS']&&F.documentElement.namespaceURI;E=E?F[i+'NS'](E,'script'):F[i]('script');E[r]('id',b);E[r]('src',I+g+T);E[r](b,u);(F[e]('head')[0]||F[e]('body')[0]).appendChild(E);E=new%20Image;E[r]('src',I+L);})(document,'createElement','setAttribute','getElementsByTagName','FirebugLite','4','firebug-lite.js','releases/lite/latest/skin/xp/sprite.png','https://getfirebug.com/','#startOpened');">FireBug Lite</a> in window mode.
-    </p>
-    <pre class="highlight">
-log {a:1, b:2}
-</pre>
-    <p>
       Eventually there will be a tutorial here for beginning programmers. For now, there are a few notes and code examples.
     </p>
-    <h2>Awww...</h2>
+    <h2>Get Pictures of Cats</h2>
     <p>Let's get some adorable pictures from Reddit:</p>
     <pre class="highlight">
 json 'http://www.reddit.com/r/aww.json?jsonp=?', (data) ->
   puts pretty data
   window.aww = pluck(data['data']['children'], 'data')
 </pre>
-    <p>When the data loads, it'll fill up the console. The part that we need, data about the links, will be saved to the global variable <em>aww</em>. Let's take a look at the first link:</p>
+    <p>When the data loads, it'll fill up the console. The part that we need, data about the links, will be saved to the global variable <em>aww</em>. Take a look at the first link:</p>
     <pre class="highlight">pretty aww[0]</pre>
     <p>The thumbnail property probably has the highest density of cuteness, so let's make a function that turns <em>aww[0]</em> into an image:</p>
     <pre class="highlight">

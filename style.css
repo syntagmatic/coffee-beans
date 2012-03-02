@@ -145,7 +145,7 @@ pre {
   height: 120px;
   margin-bottom: 2px;
 }
-.CodeMirror-scroll {
+.CodeMirror {
   height: 100px;
   background: #fff;
   margin: 0 0 8px 0;
@@ -155,6 +155,9 @@ pre {
   font-size: 12px;
   resize: both;
   border-radius: 4px;
+}
+.CodeMirror.CodeMirror-focused {
+  border: 2px solid #0076ad;
 }
 .CodeMirror-lines {
   padding: .4em 0;
