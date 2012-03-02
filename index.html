@@ -30,8 +30,8 @@
 
   <div id="console">
     <div class="inner">
-      <div id="output">
-        <pre class="output" style="font-weight:bold;">Welcome to CoffeeBeans</pre>
+      <div id="puts">
+        <pre class="puts" style="font-weight:bold;">Welcome to CoffeeBeans</pre>
       </div>
       <div id="coffee-error">
         <span class="bang">
@@ -103,13 +103,19 @@
       Command history is saved in local storage, so you can access past commands when you come back.
     </p>
     <p>
+      Use your browser's javascript console to view data. Or use <a href="javascript:(function(F,i,r,e,b,u,g,L,I,T,E){if(F.getElementById(b))return;E=F[i+'NS']&&F.documentElement.namespaceURI;E=E?F[i+'NS'](E,'script'):F[i]('script');E[r]('id',b);E[r]('src',I+g+T);E[r](b,u);(F[e]('head')[0]||F[e]('body')[0]).appendChild(E);E=new%20Image;E[r]('src',I+L);})(document,'createElement','setAttribute','getElementsByTagName','FirebugLite','4','firebug-lite.js','releases/lite/latest/skin/xp/sprite.png','https://getfirebug.com/','#startOpened');">FireBug Lite</a> in window mode.
+    </p>
+    <pre class="highlight">
+log {a:1, b:2}
+</pre>
+    <p>
       Eventually there will be a tutorial here for beginning programmers. For now, there are a few notes and code examples.
     </p>
     <h2>Awww...</h2>
     <p>Let's get some adorable pictures from Reddit:</p>
     <pre class="highlight">
 json 'http://www.reddit.com/r/aww.json?jsonp=?', (data) ->
-  output pretty data
+  data
   window.aww = pluck(data['data']['children'], 'data')
 </pre>
     <p>When the data loads, it'll fill up the console. The part that we need, data about the links, will be saved to the global variable <em>aww</em>. Let's take a look at the first link:</p>
@@ -125,7 +131,7 @@ thumbnail aww[0]
 </pre>
     <p>If a picture appeared, get ready for cuteness overload. Let's use <em>each</em> to see them all!</p>
     <pre class="highlight">
-each aww, (obj) -> output thumbnail obj
+each aww, (obj) -> puts thumbnail obj
 </pre>
     <h2>Events</h2>
     <p>A module which provides named <a href="http://documentcloud.github.com/backbone/#Events">events</a> on an object.</p>
@@ -145,7 +151,7 @@ $('#my-phone').on 'click', ->
 
 # print a message when the phone rings
 phone.on "ring", ->
-  output "someone's calling..."
+  puts "someone's calling..."
 </pre>
     <p>Click the button!</p>
 
@@ -171,20 +177,20 @@ sidebar.color '#FFCC33'
     <pre class="highlight">
 html "&lt;svg height=100&gt;&lt;circle cx=50 cy=50 r=40 fill=violet&gt;&lt;/svg&gt;"</pre>
 
-    <h2>Colored Output</h2>
+    <h2>Colored puts</h2>
     <p>Print out colored lines.</p>
     <pre class="highlight">
-color_output = (text, color) ->
-  output html "&lt;pre style=&#x27;color:#{color}&#x27;&gt;#{text}&lt;&#x2F;pre&gt;"
+color_puts = (text, color) ->
+  puts html "&lt;pre style=&#x27;color:#{color}&#x27;&gt;#{text}&lt;&#x2F;pre&gt;"
   return   # no need to return anything
 
-green_output = (text) -> color_output(text, '#00bd12')
-red_output   = (text) -> color_output(text, '#bd1107')
-pink_output  = (text) -> color_output(text, '#ff3366')
+green_puts = (text) -> color_puts(text, '#00bd12')
+red_puts   = (text) -> color_puts(text, '#bd1107')
+pink_puts  = (text) -> color_puts(text, '#ff3366')
 
-green_output "eggs and ham"
-red_output "danger will robinson"
-pink_output "happy to be here"
+green_puts "eggs and ham"
+red_puts "danger will robinson"
+pink_puts "happy to be here"
 </pre
 >
     <h2>Arrays</h2>

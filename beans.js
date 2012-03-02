@@ -2,6 +2,7 @@
   // globalize underscore
   _.extend(window, _);
   _.extend(window, {
+    log: function() { console.log.apply(console, arguments) },
     Events: Backbone.Events,
     Model: Backbone.Model,
     Collection: Backbone.Collection,
@@ -15,7 +16,7 @@
   var curr = commands.size();  // current command
   var error_state = false;
 
-  var output_node = document.getElementById('output');
+  var puts_node = document.getElementById('puts');
 
   window.editor = CodeMirror.fromTextArea(document.getElementById("input"), {
     mode: 'coffeescript',
@@ -40,9 +41,9 @@
     highlight_coffee(this, code);
   });
 
-  $('#output').css({'max-height': $(window).height() - 126});
+  $('#puts').css({'max-height': $(window).height() - 126});
   $(window).bind("resize", function() {
-    $('#output').css({'max-height': $(window).height() - 126});
+    $('#puts').css({'max-height': $(window).height() - 126});
   });
 
   function autocomplete(cm) {
@@ -123,23 +124,23 @@
         var result = eval.call(null, jscode.result);
 
       // print result
-        output(result);
+        puts(result);
       } catch (error) {
-        output_error("Javascript error: " + result);
+        puts_error("Javascript error: " + result);
       }
     } else if (jscode.type == "error") {
-      output_error("CoffeeScript error: " + jscode.result.message);
+      puts_error("CoffeeScript error: " + jscode.result.message);
     }
 
     curr = commands.size();
   };
 
-  function output_print(txt, className) {
+  function puts_print(txt, className) {
     var txt_node = document.createElement('pre');
     txt_node.className = className;
-    output_node.appendChild(txt_node);
+    puts_node.appendChild(txt_node);
 
-    if (className == 'input' || className == 'output') {
+    if (className == 'input' || className == 'puts') {
       highlight_js(txt_node, txt);
     } else {
       $(txt_node).text(txt);
@@ -150,10 +151,10 @@
 
   function toBottom() {
     // scroll to bottom
-    $('#output').animate({scrollTop: $('#output')[0].scrollHeight}, 0);
+    $('#puts').animate({scrollTop: $('#puts')[0].scrollHeight}, 0);
   };
 
-  window.output = function(result) {
+  window.puts = function(result) {
 
     switch (type(result)) {
       case "array":
@@ -166,7 +167,7 @@
         try {
           result = JSON.stringify(result);
         } catch (err) {
-          output_error("Print error: " + err.message);
+          puts_error("Print error: " + err.message);
           return;
         }
         break;
@@ -181,7 +182,7 @@
         break;
       case "undefined":
         result = "undefined";
-        break;
+        return;                  // do nothing
       case "null":
         result = "null";
         break;
@@ -195,7 +196,7 @@
         result = result.toString();
         break;
       case "element":
-        $(output_node).append(result);
+        $(puts_node).append(result);
         setTimeout(function() { toBottom(); }, 40);
         return;
         break;
@@ -204,11 +205,11 @@
     }
 
     //var coffee_result = Js2coffee.build(result + "");
-    output_print(result, "output");
+    puts_print(result, "puts");
   };
 
-  function output_error(result) {
-    output_print(result, "error");
+  function puts_error(result) {
+    puts_print(result, "error");
   };
 
   function highlight_coffee(node, code) {
