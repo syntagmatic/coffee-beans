@@ -253,3 +253,8 @@ svg {
 em {
   font-style: italic;
 }
+.beans-arrow {
+  font-style: normal;
+  font-size: 22px;
+  line-height: 10px;
+}
