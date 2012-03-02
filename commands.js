@@ -37,7 +37,7 @@
       code = this.model.get('contents');
       $(this.el).addClass('cm-s-idle');
       CodeMirror.runMode(code, "coffeescript", this.el);
-      return $('#output').append(this.el);
+      return $('#puts').append(this.el);
     }
   });
 })();

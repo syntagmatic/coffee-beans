@@ -113,17 +113,21 @@
     var command = commands.create({
       contents: code
     });
-    (new CommandView({
-      model: command
-    })).render();
 
+    var command_view = new CommandView({
+      model: command
+    });
+
+    command_view.render();
+
+    window.b = command_view;
     jscode = command.compile();
 
     if (jscode.type == "success") {
       try {
         var result = eval.call(null, jscode.result);
 
-      // print result
+        // print result
         puts(result);
       } catch (error) {
         puts_error("Javascript error: " + result);
@@ -142,6 +146,8 @@
 
     if (className == 'input' || className == 'puts') {
       highlight_js(txt_node, txt);
+    } else if (className == 'beans-puts-coffee') {
+      highlight_coffee(txt_node, txt);
     } else {
       $(txt_node).text(txt);
     }
@@ -161,8 +167,9 @@
         result = JSON.stringify(result);
         break;
       case "function":
-        result = result.toString();
-        break;
+        result = js2coffee(result);
+        puts_print(result, "beans-puts-coffee");
+        return;
       case "object":
         try {
           result = JSON.stringify(result);
@@ -255,4 +262,12 @@ function repeat(func, interval) {
   setTimeout(function() {
     repeat(func, interval);
   }, interval);
+};
+
+function js2coffee(obj) {
+  if ('function' == type(obj)) {
+    var str = "var $_$_$ = " + obj.toString();
+    var compiled = Js2coffee.build(str);
+    return compiled.slice(8)
+  }
 };

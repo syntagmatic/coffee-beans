@@ -33,4 +33,4 @@ do ->
       code = @model.get('contents')
       $(@el).addClass('cm-s-idle');
       CodeMirror.runMode(code, "coffeescript", @el)
-      $('#output').append(this.el)
+      $('#puts').append(this.el)
