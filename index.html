@@ -115,7 +115,7 @@ log {a:1, b:2}
     <p>Let's get some adorable pictures from Reddit:</p>
     <pre class="highlight">
 json 'http://www.reddit.com/r/aww.json?jsonp=?', (data) ->
-  data
+  puts pretty data
   window.aww = pluck(data['data']['children'], 'data')
 </pre>
     <p>When the data loads, it'll fill up the console. The part that we need, data about the links, will be saved to the global variable <em>aww</em>. Let's take a look at the first link:</p>

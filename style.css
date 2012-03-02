@@ -82,7 +82,7 @@ pre {
 #console .inner {
   height: 100%;
   padding: 0 20px;
-  background: #fff;
+  background: #fafafa;
 }
 #console pre {
   margin: 0;
@@ -166,6 +166,7 @@ pre {
   border: 1px solid #c8c8c8;
   box-shadow: 0 0 3px #ddd;
   border-radius: 4px;
+  background: #fff;
 }
 #console .puts {
   width: 522px;
