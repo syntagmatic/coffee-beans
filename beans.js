@@ -120,7 +120,6 @@
 
     command_view.render();
 
-    window.b = command_view;
     jscode = command.compile();
 
     if (jscode.type == "success") {
