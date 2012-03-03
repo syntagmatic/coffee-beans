@@ -86,7 +86,7 @@ pre {
   margin: 0 20px;
 }
 #console pre {
-  margin: 0 4% 0 0;
+  margin: 0;
   padding: 0;
 }
 #puts {
@@ -116,6 +116,7 @@ pre {
   display: none;
   position: absolute;
   bottom: 123px;
+  right: 2%;
   font-size: 10px;
   background: #f6f6f6;
   color: #999;
@@ -193,10 +194,10 @@ pre {
 }
 #main {
   margin-left: 50%;
-  width: 50%;
+  width: 46%;
   position: relative;
   z-index: 5;
-  padding: 4px 20px;
+  padding: 4px 2%;
   border-left: 1px solid #d0d0d0;
   box-shadow: inset 0 0 8px #ccc;
   min-width: 320px;
