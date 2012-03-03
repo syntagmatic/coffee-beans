@@ -68,13 +68,29 @@ circle
   .attr('cx', 400)
   .attr('cy', 100)
   .attr('r', 40)
-  .attr('fill', 'orange')
 </pre>
+      <p></p>
+      <pre class="highlight">
+circle
+  .transition()
+  .duration(800)
+  .attr('cx', 500)
+  .attr('cy', 150)
+  .attr('fill', 'orange')
+  .attr('r', 200)
+</pre>
+
+<pre class="highlight">
+my_data = [1,2,3,4,5,4,3,2,1]
+svg.selectAll('circle')
+circles = svg
+  .selectAll('circle')
+  .data(my_data)
+  .enter().append('circle')</pre>
+
     </div>
   </div>
 <script src=commands.js></script>
 <script src=beans.js></script>
-
-</body>
 
 </html>

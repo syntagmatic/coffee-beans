@@ -262,9 +262,18 @@ em {
 .beans-bot {
   height: 50%;
   width: 100%;
+  position: relative;
 }
 .beans-bot #console {
   height: 50%;
   top: 50%;
   overflow: hidden;
+}
+.beans-bot #main {
+  margin: 0;
+  padding: 0 2%;
+  margin-left: 50%;
+  width: 46%;
+  height: 100%;
+  overflow: auto;
 }
