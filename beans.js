@@ -88,6 +88,10 @@
     window[k].toString = function() { return v; } ;
   });
 
+  // log
+  window['log'] = function() { console.log.apply(console, arguments); };
+  window['log'].toString = function() { return "console.log"; };
+
   var commands = new Commands();
   commands.fetch();
   var curr = commands.size();  // current command
@@ -202,11 +206,15 @@
     if (jscode.type == "success") {
       try {
         var result = eval.call(null, jscode.result);
-
-        // print result
-        puts(result);
+        try {
+          puts(result);
+        } catch (error) {
+          puts_error("Result: " + result);
+          puts_error("Puts error: " + error.message);
+        }
       } catch (error) {
-        puts_error("Javascript error: " + result);
+        puts_error("Result: " + result);
+        puts_error("Javascript error: " + error.message);
       }
     } else if (jscode.type == "error") {
       puts_error("CoffeeScript error: " + jscode.result.message);
@@ -240,7 +248,11 @@
 
     switch (type(result)) {
       case "array":
-        result = JSON.stringify(result);
+        try {
+          result = JSON.stringify(result);
+        } catch (error) {
+          result = result.toString();
+        }
         break;
       case "function":
         result = js2coffee(result);

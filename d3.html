@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>CoffeeBeans</title>
+<script src="lib/jquery.js"></script>
+<script src="lib/coffee-script.js"></script>
+<script src="lib/underscore.js"></script>
+<script src="lib/underscore.math/underscore.math.js"></script>
+<script src="lib/backbone.js"></script>
+<script src="lib/backbone-localstorage.js"></script>
+<script src="lib/js2coffee.min.js"></script>
+<script src="lib/d3.v2.js"></script>
+<script src="lib/require.js"></script>
+
+<script src=lib/codemirror2/lib/codemirror.js></script>
+<script src=lib/codemirror2/lib/util/runmode.js></script>
+<script src=lib/codemirror2/mode/javascript/javascript.js></script>
+<script src=coffeescript-mode.js></script>
+<script src=lib/codemirror2/lib/util/simple-hint.js></script>
+<script src=lib/codemirror2/lib/util/javascript-hint.js></script>
+<link rel=stylesheet href=lib/codemirror2/lib/util/simple-hint.css>
+<link rel=stylesheet href=lib/codemirror2/lib/codemirror.css>
+<link rel=stylesheet href=coffeescript.css>
+<link rel=stylesheet href=style.css>
+
+</head>
+
+<body>
+  <div class="beans-top">
+    <svg></svg>
+  </div>
+
+  <div class="beans-bot">
+    <div id="console">
+      <div class="inner">
+        <div id="puts">
+          <pre class="puts" style="font-weight:bold;">Welcome to CoffeeBeans</pre>
+        </div>
+        <div id="coffee-error">
+          <span class="bang">
+          !
+          </span>
+          <span id="compile-error">
+          </span>
+        </div>
+        <div class="buttons">
+          <button id="store-code">Store</button>
+          <button id="bloh">!</button>
+          <button id="blah">!</button>
+          <button id="bleh">!</button>
+        </div>
+        <div id="input-wrap"><textarea id="input" class="input" wrap="off" rows="1"></textarea></div>
+      </div>
+    </div>
+
+    <div id="main">
+      <p>Select the SVG Element</p>
+      <pre class="highlight">
+svg = d3.select('svg')</pre>
+      <p>Append a circle</p>
+      <pre class="highlight">
+circle = svg.append('circle')</pre>
+      <p>Let's give our circle some style:</p>
+      <pre class="highlight">
+circle
+  .attr('cx', 400)
+  .attr('cy', 100)
+  .attr('r', 40)
+  .attr('fill', 'orange')
+</pre>
+    </div>
+  </div>
+<script src=commands.js></script>
+<script src=beans.js></script>
+
+</body>
+
+</html>

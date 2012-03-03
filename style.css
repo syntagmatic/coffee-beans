@@ -150,7 +150,7 @@ pre {
   bottom: 0px;
   height: 120px;
 }
-.CodeMirror {
+.CodeMirror-scroll {
   height: 100px;
   background: #fff;
   margin: 0 0 8px 0;
@@ -160,9 +160,6 @@ pre {
   font-size: 12px;
   resize: both;
   border-radius: 4px;
-}
-.CodeMirror.CodeMirror-focused {
-  border: 2px solid #0076ad;
 }
 .CodeMirror-lines {
   padding: .4em 0;
@@ -260,4 +257,14 @@ em {
   font-style: normal;
   font-size: 22px;
   line-height: 10px;
+}
+.beans-top,
+.beans-bot {
+  height: 50%;
+  width: 100%;
+}
+.beans-bot #console {
+  height: 50%;
+  top: 50%;
+  overflow: hidden;
 }
