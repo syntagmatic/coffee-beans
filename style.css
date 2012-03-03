@@ -272,7 +272,7 @@ em {
   width: 340px;
   z-index: 5;
   height: 84%;
-  padding: 2% 20px;
+  padding: 0 20px;
   margin: 5% 0 12% 1.5%;
   border: 1px solid #bbb;
   box-shadow: 0 0 6px #ccc;
@@ -281,15 +281,31 @@ em {
   border-bottom-left-radius: 4px;
   overflow: auto;
 }
+#console.beans-side-console #puts {
+  top: 1.5%;
+  height: 76.5%;
+  border: 1px solid #bbb;
+  background: rgba(100,100,100,0.07);
+  width: 320px;
+  padding: 1% 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 6px #ccc;
+  margin: 0;
+}
+#console.beans-side-console #coffee-error {
+  bottom: 18%;
+  right: 10%;
+}
+#console.beans-side-console #input-wrap{
+  width: 340px;
+  height: 18%;
+  margin: 0;
+}
 #console.beans-side-console {
   position: fixed;
   height: 84%;
   width: 340px;
   padding: 2% 20px;
-  margin: 5% 1.5% 12% 0;
-  border: 1px solid #bbb;
-  background: rgba(100,100,100,0.07);
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  box-shadow: 0 0 6px #ccc;
+  margin: 5% 1.5% 12% 1.5%;
+  background: rgba(255,255,255,0);
 }

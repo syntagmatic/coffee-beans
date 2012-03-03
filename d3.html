@@ -57,31 +57,32 @@ svg = d3.select('svg')</pre>
     <p>Append a circle</p>
     <pre class="highlight">
 circle = svg.append('circle')</pre>
-    <p>Let's give our circle some style:</p>
+    <p>Give the circle a position and radius</p>
     <pre class="highlight">
 circle
-.attr('cx', 400)
-.attr('cy', 100)
-.attr('r', 40)
+  .attr('cx', 400)
+  .attr('cy', 100)
+  .attr('r', 40)
 </pre>
-    <p></p>
+    <p>Transition to a new position, radius, and fill color</p>
     <pre class="highlight">
 circle
-.transition()
-.duration(800)
-.attr('cx', 500)
-.attr('cy', 150)
-.attr('fill', 'orange')
-.attr('r', 200)
+  .transition()
+  .duration(800)
+  .attr('cx', 500)
+  .attr('cy', 150)
+  .attr('fill', 'orange')
+  .attr('r', 200)
 </pre>
-
+<p>Create some data</p>
 <pre class="highlight">
-my_data = [1,2,3,4,5,4,3,2,1]
-svg.selectAll('circle')
+some_data = [1,2,3,4,5,4,3,2,1]</pre>
+<p>Bind the data to the circles</p>
+<pre class="highlight">
 circles = svg
-.selectAll('circle')
-.data(my_data)
-.enter().append('circle')</pre>
+  .selectAll('circle')
+  .data(some_data)
+  .enter().append('circle')</pre>
 
   </div>
   <svg id="chart"></svg>
