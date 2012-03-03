@@ -27,69 +27,64 @@
 
 </head>
 
-<body>
-  <div class="beans-top">
-    <svg></svg>
+<body class="fullscreen">
+  <div id="console" class="beans-side-console">
+    <div class="inner">
+      <div id="puts">
+        <pre class="puts" style="font-weight:bold;">Welcome to CoffeeBeans</pre>
+      </div>
+      <div id="coffee-error">
+        <span class="bang">
+        !
+        </span>
+        <span id="compile-error">
+        </span>
+      </div>
+      <div class="buttons">
+        <button id="store-code">Store</button>
+        <button id="bloh">!</button>
+        <button id="blah">!</button>
+        <button id="bleh">!</button>
+      </div>
+      <div id="input-wrap"><textarea id="input" class="input" wrap="off" rows="1"></textarea></div>
+    </div>
   </div>
 
-  <div class="beans-bot">
-    <div id="console">
-      <div class="inner">
-        <div id="puts">
-          <pre class="puts" style="font-weight:bold;">Welcome to CoffeeBeans</pre>
-        </div>
-        <div id="coffee-error">
-          <span class="bang">
-          !
-          </span>
-          <span id="compile-error">
-          </span>
-        </div>
-        <div class="buttons">
-          <button id="store-code">Store</button>
-          <button id="bloh">!</button>
-          <button id="blah">!</button>
-          <button id="bleh">!</button>
-        </div>
-        <div id="input-wrap"><textarea id="input" class="input" wrap="off" rows="1"></textarea></div>
-      </div>
-    </div>
-
-    <div id="main">
-      <p>Select the SVG Element</p>
-      <pre class="highlight">
+  <div id="beans-docs">
+    <p>Select the SVG Element</p>
+    <pre class="highlight">
 svg = d3.select('svg')</pre>
-      <p>Append a circle</p>
-      <pre class="highlight">
+    <p>Append a circle</p>
+    <pre class="highlight">
 circle = svg.append('circle')</pre>
-      <p>Let's give our circle some style:</p>
-      <pre class="highlight">
+    <p>Let's give our circle some style:</p>
+    <pre class="highlight">
 circle
-  .attr('cx', 400)
-  .attr('cy', 100)
-  .attr('r', 40)
+.attr('cx', 400)
+.attr('cy', 100)
+.attr('r', 40)
 </pre>
-      <p></p>
-      <pre class="highlight">
+    <p></p>
+    <pre class="highlight">
 circle
-  .transition()
-  .duration(800)
-  .attr('cx', 500)
-  .attr('cy', 150)
-  .attr('fill', 'orange')
-  .attr('r', 200)
+.transition()
+.duration(800)
+.attr('cx', 500)
+.attr('cy', 150)
+.attr('fill', 'orange')
+.attr('r', 200)
 </pre>
 
 <pre class="highlight">
 my_data = [1,2,3,4,5,4,3,2,1]
 svg.selectAll('circle')
 circles = svg
-  .selectAll('circle')
-  .data(my_data)
-  .enter().append('circle')</pre>
+.selectAll('circle')
+.data(my_data)
+.enter().append('circle')</pre>
 
-    </div>
   </div>
+  <svg id="chart"></svg>
 <script src=commands.js></script>
 <script src=beans.js></script>
 

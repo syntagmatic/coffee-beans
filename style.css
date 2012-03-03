@@ -51,6 +51,9 @@ body {
   font-family: "Helvetica Neue", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
   min-width: 640px;
 }
+body.fullscreen {
+  overflow: hidden;
+}
 p {
   line-height: 1.3em;
   margin: 14px 0;
@@ -240,8 +243,12 @@ h2 {
 .clear {
   clear: both;
 }
-svg {
+#chart {
   width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #f8f8f8;
 }
 .beans-video {
   padding: 12px;
@@ -258,22 +265,31 @@ em {
   font-size: 22px;
   line-height: 10px;
 }
-.beans-top,
-.beans-bot {
-  height: 50%;
-  width: 100%;
-  position: relative;
-}
-.beans-bot #console {
-  height: 50%;
-  top: 50%;
-  overflow: hidden;
-}
-.beans-bot #main {
-  margin: 0;
-  padding: 0 2%;
-  margin-left: 50%;
-  width: 46%;
-  height: 100%;
+#beans-docs {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 340px;
+  z-index: 5;
+  height: 84%;
+  padding: 2% 20px;
+  margin: 5% 0 12% 1.5%;
+  border: 1px solid #bbb;
+  box-shadow: 0 0 6px #ccc;
+  background: rgba(100,100,100,0.07);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
   overflow: auto;
+}
+#console.beans-side-console {
+  position: fixed;
+  height: 84%;
+  width: 340px;
+  padding: 2% 20px;
+  margin: 5% 1.5% 12% 0;
+  border: 1px solid #bbb;
+  background: rgba(100,100,100,0.07);
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 0 6px #ccc;
 }
