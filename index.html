@@ -273,7 +273,12 @@ class DelayedOp
   </div>
 <script src=commands.js></script>
 <script src=beans.js></script>
-
+<script>
+</script>
+  $('#puts').css({'max-height': $(window).height() - 126});
+  $(window).bind("resize", function() {
+    $('#puts').css({'max-height': $(window).height() - 126});
+  });
 </body>
 
 </html>

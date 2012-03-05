@@ -122,11 +122,6 @@
     highlight_coffee(this, code);
   });
 
-  $('#puts').css({'max-height': $(window).height() - 126});
-  $(window).bind("resize", function() {
-    $('#puts').css({'max-height': $(window).height() - 126});
-  });
-
   function autocomplete(cm) {
     CodeMirror.simpleHint(cm, CodeMirror.coffeescriptHint);
   }
@@ -273,7 +268,7 @@
         result = result.toString();
         break;
       case "string":
-        result = '"' + result + '"';
+        result = result;
         break;
       case "undefined":
         result = "undefined";
@@ -358,4 +353,8 @@ function js2coffee(obj) {
     var compiled = Js2coffee.build(str);
     return compiled.slice(8)
   }
+};
+
+function coffee2js(str) {
+  return CoffeeScript.compile(str).slice(16,-17);
 };
