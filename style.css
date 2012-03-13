@@ -73,7 +73,6 @@ pre {
   line-height: 1.3em;
 }
 #console {
-  font-family: Monaco, Consolas, "Lucida Console", monospace;
   min-width: 320px;
   height: 100%;
   position: fixed;
@@ -266,12 +265,10 @@ em {
 #beans-docs {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   width: 340px;
+  height: 100%;
   z-index: 5;
-  height: 84%;
-  padding: 0 20px;
-  margin: 5% 0 12% 1.5%;
   border: 1px solid #bbb;
   box-shadow: 0 0 6px #ccc;
   background: rgba(100,100,100,0.07);
@@ -279,31 +276,40 @@ em {
   border-bottom-left-radius: 4px;
   overflow: auto;
 }
-#console.beans-side-console #puts {
-  top: 1.5%;
-  height: 65%;
-  border: 1px solid #bbb;
-  background: rgba(100,100,100,0.07);
-  width: 320px;
-  padding: 1% 10px;
-  border-radius: 4px;
-  box-shadow: 0 0 6px #ccc;
-  margin: 0;
+#beans-docs .inner {
+  padding: 20px;
 }
-#console.beans-side-console #coffee-error {
-  right: 0px;
-  bottom: 29.5%;
-}
-#console.beans-side-console #input-wrap{
-  width: 340px;
-  height: 26%;
-  bottom: 3%;
-  margin: 0;
+#coffee-error {
+  top: 444px;
 }
 #console.beans-side-console {
   position: fixed;
+  left: 360px;
   width: 340px;
-  padding: 6px 0;
-  margin: 5% 1.5% 12% 1.5%;
-  background: rgba(255,255,255,0);
+  height: 100%;
+}
+#console.beans-side-console #puts {
+  top: 20px;
+  height: 400px;
+  border: 1px solid #bbb;
+  width: 320px;
+  padding: 10px 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 6px #ccc;
+  background: #f2f2f2;
+  margin: 0;
+  resize: horizontal;
+}
+#console.beans-side-console #puts * {
+  resize: none;
+}
+#console.beans-side-console #coffee-error {
+  right: 0px;
+  bottom: 27.5%;
+}
+#console.beans-side-console #input-wrap{
+  width: 340px;
+  height: 100px;
+  top: 460px;
+  margin: 0;
 }

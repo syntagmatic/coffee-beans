@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>CoffeeBeans</title>
+<title>CoffeeBeans for d3.js</title>
 <script src="lib/jquery.js"></script>
 <script src="lib/coffee-script.js"></script>
 <script src="lib/underscore.js"></script>
@@ -24,13 +24,26 @@
 <link rel=stylesheet href=lib/codemirror2/lib/codemirror.css>
 <link rel=stylesheet href=coffeescript.css>
 <link rel=stylesheet href=style.css>
+<style>
+#chart {
+  margin: 20px 0 0 720px;
+  height: 420px;
+  width: 420px;
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  box-shadow: 0 0 4px #d0d0d0;
+  resize: both;
+}
+</style>
 
 </head>
 
 <body class="fullscreen">
   <div id="console" class="beans-side-console">
     <div id="puts">
-      <pre class="puts" style="font-weight:bold;">Welcome to CoffeeBeans</pre>
+      <p>A <a href="http://coffeescript.org/">CoffeeScript</a> console for <a href="http://mbostock.github.com/d3/">d3.js</a> visualization</p>
+      <p>Find more tutorials on the <a href="https://github.com/mbostock/d3/wiki">wiki</a></p>
+      <p>Study the <a href="https://github.com/mbostock/d3/wiki/API-Reference">reference</a> to discover what's possible</p>
     </div>
     <div id="coffee-error">
       <span class="bang">
@@ -49,16 +62,51 @@
   </div>
 
   <div id="beans-docs">
+    <div class="inner">
+    <div>
+      <div class="half">
+        <h2>Keyboard Shortcuts</h2>
+        <table class="shortcuts">
+          <tr>
+            <td>Enter</td>
+            <td>Run code</td>
+          </tr>
+          <tr>
+            <td>Tab</td>
+            <td>Autocomplete</td>
+          </tr>
+          <tr>
+            <td>Shift-Enter</td>
+            <td>New Line</td>
+          </tr>
+        </table>
+      </div>
+      <div class="half">
+        <h2>History</h2>
+        <table class="shortcuts">
+          <tr>
+            <td>Up</td>
+            <td>Previous command</td>
+          </tr>
+          <tr>
+            <td>Down</td>
+            <td>Next command</td>
+          </tr>
+        </table>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <h2>Tutorial</h2>
     <p>Select the SVG Element</p>
     <pre class="highlight">
-svg = d3.select('svg')</pre>
+svg = d3.select('#chart')</pre>
     <p>Append a circle</p>
     <pre class="highlight">
 circle = svg.append('circle')</pre>
     <p>Give the circle a position and radius</p>
     <pre class="highlight">
 circle
-  .attr('cx', 400)
+  .attr('cx', 100)
   .attr('cy', 100)
   .attr('r', 40)
 </pre>
@@ -67,8 +115,8 @@ circle
 circle
   .transition()
   .duration(800)
-  .attr('cx', 500)
-  .attr('cy', 150)
+  .attr('cx', 200)
+  .attr('cy', 200)
   .attr('fill', 'orange')
   .attr('r', 200)
 </pre>
@@ -77,11 +125,34 @@ circle
 some_data = [1,2,3,4,5,4,3,2,1]</pre>
 <p>Bind the data to the circles</p>
 <pre class="highlight">
-circles = svg
-  .selectAll('circle')
+svg.selectAll('circle')
   .data(some_data)
-  .enter().append('circle')</pre>
+  .enter().append('circle')
+  
+circles = svg.selectAll('circle')</pre>
+<p>Make a simple visualization</p>
+<pre class="highlight">
+circles
+  .transition()
+  .duration(800)
+  .attr('stroke', '#666')
+  .attr('fill', '#444')
+  .attr('cx', (d,i) -> 40+40*i)
+  .attr('cy', (d,i) -> 40+40*i)
+  .attr('r', (d,i) -> 5*d)</pre>
 
+<p>Transition representation</p>
+<pre class="highlight">
+circles
+  .transition()
+  .duration(800)
+  .attr('fill', (d) ->
+    d3.hsl(40*d,0.6,0.7/d)
+  )
+  .attr('cx', 210)
+  .attr('stroke', '#fff')</pre>
+
+    </div>
   </div>
   <svg id="chart"></svg>
 <script src=commands.js></script>
