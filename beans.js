@@ -35,6 +35,7 @@
     $(el).append('<div class="buttons"><svg class="button copier"><path transform="scale(0.6)" d="M10.129,22.186 16.316,15.999 10.129,9.812 13.665,6.276 23.389,15.999 13.665,25.725z"></svg></div>');
     $(el).children('.buttons').children('.copier').on('click', function() {
       editor.setValue(code);
+      editor.focus();
     });
   }
 

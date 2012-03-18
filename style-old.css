@@ -270,7 +270,7 @@ em {
   cursor: pointer;
 }
 .buttons path {
-  fill: rgba(0,0,0,0.3);
+  fill: rgba(0,0,0,0.15);
 }
 .buttons svg:hover path {
   fill: rgba(0,0,0,1);
