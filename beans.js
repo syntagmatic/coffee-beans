@@ -1,97 +1,4 @@
 (function() {
-  var globals = {
-    //log: function() { console.log.apply(console, arguments) },
-    after: '_.after',
-    all: '_.all',
-    any: '_.any',
-    bindAll: '_.bindAll',
-    bind: '_.bind',
-    clone: '_.clone',
-    Collection: 'Backbone.Collection',
-    compact: '_.compact',
-    compose: '_.compose',
-    debounce: '_.debounce',
-    defaults: '_.defaults',
-    defer: '_.defer',
-    delay: '_.delay',
-    difference: '_.difference',
-    each: '_.each',
-    'escape': '_.escape',
-    Events: 'Backbone.Events',
-    extend: '_.extend',
-    filter: '_.filter',
-    find: '_.find',
-    first: '_.first',
-    flatten: '_.flatten',
-    functions: '_.functions',
-    groupBy: '_.groupBy',
-    has: '_.has',
-    identity: '_.identity',
-    include: '_.include',
-    indexOf: '_.indexOf',
-    initial: '_.initial',
-    intersection: '_.intersection',
-    invoke: '_.invoke',
-    isArguments: '_.isArguments',
-    isArray: '_.isArray',
-    isBoolean: '_.isBoolean',
-    isDate: '_.isDate',
-    isElement: '_.isElement',
-    isEmpty: '_.isEmpty',
-    isEqual: '_.isEqual',
-    isFunction: '_.isFunction',
-    isNaN: '_.isNaN',
-    isNull: '_.isNull',
-    isNumber: '_.isNumber',
-    isRegExp: '_.isRegExp',
-    isString: '_.isString',
-    isUndefined: '_.isUndefined',
-    json: '$.getJSON',
-    keys: '_.keys',
-    lastIndexOf: '_.lastIndexOf',
-    last: '_.last',
-    map: '_.map',
-    max: '_.max',
-    memoize: '_.memoize',
-    min: '_.min',
-    Model: 'Backbone.Model',
-    once: '_.once',
-    pluck: '_.pluck',
-    range: '_.range',
-    reduce: '_.reduce',
-    reduceRight: '_.reduceRight',
-    reject: '_.reject',
-    rest: '_.rest',
-    Router: 'Backbone.Router',
-    shuffle: '_.shuffle',
-    size: '_.size',
-    sortBy: '_.sortBy',
-    sortedIndex: '_.sortedIndex',
-    tap: '_.tap',
-    template: '_.template',
-    throttle: '_.throttle',
-    times: '_.times',
-    toArray: '_.toArray',
-    union: '_.union',
-    uniq: '_.uniq',
-    values: '_.values',
-    View: 'Backbone.View',
-    without: '_.without',
-    wrap: '_.wrap',
-    zip: '_.zip',
-  };
-
-  // forgive me
-  _(globals).each(function(v,k) {
-    var func = eval(v);
-    window[k] = function() { return func.apply(this, arguments); };
-    window[k].toString = function() { return v; } ;
-  });
-
-  // log
-  window['log'] = function() { console.log.apply(console, arguments); };
-  window['log'].toString = function() { return "console.log"; };
-
   var commands = new Commands();
   commands.fetch();
   var curr = commands.size();  // current command
@@ -312,49 +219,157 @@
     CodeMirror.runMode(code, "javascript", node);
   };
 
+  var globals = {
+    //log: function() { console.log.apply(console, arguments) },
+    after: '_.after',
+    all: '_.all',
+    any: '_.any',
+    bindAll: '_.bindAll',
+    bind: '_.bind',
+    clone: '_.clone',
+    coffee2js: coffee2js,
+    Collection: 'Backbone.Collection',
+    compact: '_.compact',
+    compose: '_.compose',
+    debounce: '_.debounce',
+    defaults: '_.defaults',
+    defer: '_.defer',
+    delay: '_.delay',
+    difference: '_.difference',
+    each: '_.each',
+    'escape': '_.escape',
+    Events: 'Backbone.Events',
+    extend: '_.extend',
+    filter: '_.filter',
+    find: '_.find',
+    first: '_.first',
+    flatten: '_.flatten',
+    functions: '_.functions',
+    groupBy: '_.groupBy',
+    has: '_.has',
+    html: html,
+    identity: '_.identity',
+    include: '_.include',
+    indexOf: '_.indexOf',
+    initial: '_.initial',
+    intersection: '_.intersection',
+    invoke: '_.invoke',
+    isArguments: '_.isArguments',
+    isArray: '_.isArray',
+    isBoolean: '_.isBoolean',
+    isDate: '_.isDate',
+    isElement: '_.isElement',
+    isEmpty: '_.isEmpty',
+    isEqual: '_.isEqual',
+    isFunction: '_.isFunction',
+    isNaN: '_.isNaN',
+    isNull: '_.isNull',
+    isNumber: '_.isNumber',
+    isRegExp: '_.isRegExp',
+    isString: '_.isString',
+    isUndefined: '_.isUndefined',
+    js2coffee: js2coffee,
+    json: '$.getJSON',
+    keys: '_.keys',
+    lastIndexOf: '_.lastIndexOf',
+    last: '_.last',
+    map: '_.map',
+    max: '_.max',
+    memoize: '_.memoize',
+    min: '_.min',
+    Model: 'Backbone.Model',
+    once: '_.once',
+    pluck: '_.pluck',
+    pretty: pretty,
+    range: '_.range',
+    reduce: '_.reduce',
+    reduceRight: '_.reduceRight',
+    reject: '_.reject',
+    repeat: repeat,
+    rest: '_.rest',
+    Router: 'Backbone.Router',
+    shuffle: '_.shuffle',
+    size: '_.size',
+    sortBy: '_.sortBy',
+    sortedIndex: '_.sortedIndex',
+    tap: '_.tap',
+    template: '_.template',
+    throttle: '_.throttle',
+    times: '_.times',
+    toArray: '_.toArray',
+    type: type,
+    union: '_.union',
+    uniq: '_.uniq',
+    values: '_.values',
+    View: 'Backbone.View',
+    without: '_.without',
+    wrap: '_.wrap',
+    zip: '_.zip'
+  };
+
+  /* global functions */
+
+  function type(object) {
+    if (_.isFunction(object)) return "function";
+    if (_.isArray(object)) return "array";
+    if (_.isElement(object)) return "element";
+    if (_.isNull(object)) return "null";
+    if (_.isNaN(object)) return "NaN";
+    if (_.isDate(object)) return "date";
+    if (_.isArguments(object)) return "arguments";
+    if (_.isUndefined(object)) return "undefined";
+    if (_.isRegExp(object)) {
+      return "RegExp";
+    } else {
+      return typeof object;
+    }
+  };
+
+  function html(str) {
+    return $(str)[0];
+  };
+
+  function pretty(obj) {
+    return JSON.stringify(obj, undefined, 2);
+  };
+
+  function repeat(func, interval) {
+    func();
+    setTimeout(function() {
+      repeat(func, interval);
+    }, interval);
+  };
+
+  function js2coffee(obj) {
+    if ('function' == type(obj)) {
+      var str = "var $_$_$ = " + obj.toString();
+      var compiled = Js2coffee.build(str);
+      return compiled.slice(8)
+    }
+  };
+
+  function coffee2js(str) {
+    return CoffeeScript.compile(str).slice(16,-17);
+  };
+
+  // forgive me
+  _(globals).each(function(v,k) {
+    if (_.isString(v)) {
+      var func = eval(v);
+      window[k] = function() { return func.apply(this, arguments); };
+      window[k].toString = function() { return v; } ;
+      return;
+    }
+    if (_.isFunction(v)) {
+      window[k] = v;
+    }
+  });
+
+  // log
+  window['log'] = function() { console.log.apply(console, arguments); };
+  window['log'].toString = function() { return "console.log"; };
+
+
 })();
 
-/* global functions */
 
-function type(object) {
-  if (_.isFunction(object)) return "function";
-  if (_.isArray(object)) return "array";
-  if (_.isElement(object)) return "element";
-  if (_.isNull(object)) return "null";
-  if (_.isNaN(object)) return "NaN";
-  if (_.isDate(object)) return "date";
-  if (_.isArguments(object)) return "arguments";
-  if (_.isUndefined(object)) return "undefined";
-  if (_.isRegExp(object)) {
-    return "RegExp";
-  } else {
-    return typeof object;
-  }
-};
-
-function html(str) {
-  return $(str)[0];
-};
-
-function pretty(obj) {
-  return JSON.stringify(obj, undefined, 2);
-};
-
-function repeat(func, interval) {
-  func();
-  setTimeout(function() {
-    repeat(func, interval);
-  }, interval);
-};
-
-function js2coffee(obj) {
-  if ('function' == type(obj)) {
-    var str = "var $_$_$ = " + obj.toString();
-    var compiled = Js2coffee.build(str);
-    return compiled.slice(8)
-  }
-};
-
-function coffee2js(str) {
-  return CoffeeScript.compile(str).slice(16,-17);
-};
