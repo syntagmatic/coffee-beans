@@ -149,8 +149,11 @@ pre {
   bottom: 0px;
   height: 120px;
 }
+.CodeMirror {
+  height: 86%;
+}
 .CodeMirror-scroll {
-  height: 100px;
+  height: 100%;
   background: #fff;
   margin: 0 0 8px 0;
   padding: 4px 8px;
