@@ -25,14 +25,67 @@
 <link rel=stylesheet href=coffeescript.css>
 <link rel=stylesheet href=style-old.css>
 <style>
+body {
+  background: #ddd;
+}
 #chart {
-  margin: 20px 0 0 720px;
+  position: fixed;
+  top: 0;
+  right: 720px;
+  margin: 20px 0 0 0 ;
   height: 420px;
   width: 420px;
   background: #fff;
-  border: 1px solid #d0d0d0;
   box-shadow: 0 0 4px #d0d0d0;
+  overflow: auto;
   resize: both;
+}
+#beans-docs {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 340px;
+  height: 100%;
+  z-index: 5;
+  border-left: 1px solid #bbb;
+  box-shadow: 0 0 6px #ccc;
+  background: #f6f6f6 url('img/background.png');
+  overflow: auto;
+}
+#beans-docs .inner {
+  padding: 20px;
+}
+#console.beans-side-console {
+  position: fixed;
+  right: 360px;
+  width: 340px;
+  height: 100%;
+  background: none;
+}
+#console.beans-side-console #puts {
+  top: 20px;
+  height: 400px;
+  border: 1px solid #bbb;
+  width: 320px;
+  padding: 10px 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 6px #ccc;
+  background: #f2f2f2;
+  margin: 0;
+  resize: horizontal;
+}
+#console.beans-side-console #puts * {
+  resize: none;
+}
+#console.beans-side-console #coffee-error {
+  right: 0px;
+  bottom: 27.5%;
+}
+#console.beans-side-console #input-wrap{
+  width: 340px;
+  height: 100px;
+  top: 460px;
+  margin: 0;
 }
 </style>
 
@@ -41,9 +94,6 @@
 <body class="fullscreen">
   <div id="console" class="beans-side-console">
     <div id="puts">
-      <p>A <a href="http://coffeescript.org/">CoffeeScript</a> console for <a href="http://mbostock.github.com/d3/">d3.js</a> visualization</p>
-      <p>Find more tutorials on the <a href="https://github.com/mbostock/d3/wiki">wiki</a></p>
-      <p>Study the <a href="https://github.com/mbostock/d3/wiki/API-Reference">reference</a> to discover what's possible</p>
     </div>
     <div id="coffee-error">
       <span class="bang">
@@ -64,6 +114,9 @@
   <div id="beans-docs">
     <div class="inner">
     <div>
+      <p>A <a href="http://coffeescript.org/">CoffeeScript</a> console for <a href="http://mbostock.github.com/d3/">d3.js</a> visualization</p>
+      <p>Find more tutorials on the <a href="https://github.com/mbostock/d3/wiki">wiki</a></p>
+      <p>Study the <a href="https://github.com/mbostock/d3/wiki/API-Reference">reference</a> to discover what's possible</p>
       <div class="half">
         <h2>Keyboard Shortcuts</h2>
         <p><a href="http://fleetinbeing.net/beans/">CoffeeBeans</a> uses a <a href="http://codemirror.net/">CodeMirror</a> editor with the following shortcuts</p>
@@ -100,9 +153,10 @@
     </div>
     <h2>Tutorial</h2>
     <p>Try copying these code blocks into the console to the right, and run them.</p>
-    <p>Select the SVG Element</p>
+    <p>Create an SVG canvas</p>
     <pre class="highlight">
-svg = d3.select('#chart')</pre>
+svg = d3.select('#chart')
+  .append('svg')</pre>
     <p>Append a circle</p>
     <pre class="highlight">
 circle = svg.append('circle')</pre>
@@ -157,7 +211,7 @@ circles
 
     </div>
   </div>
-  <svg id="chart"></svg>
+  <div id="chart"></div>
 <script src=commands.js></script>
 <script src=beans.js></script>
 
