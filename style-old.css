@@ -216,6 +216,7 @@ h2 {
   background: #fff;
   border: 1px solid #d0d0d0;
   border-radius: 4px;
+  position: relative;
 }
 .shortcuts {
   background: #fff;
@@ -256,4 +257,21 @@ em {
   font-size: 22px;
   line-height: 10px;
 }
-
+.button {
+  height: 20px;
+  width: 20px;
+}
+.highlight .buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.buttons svg:hover {
+  cursor: pointer;
+}
+.buttons path {
+  fill: rgba(0,0,0,0.3);
+}
+.buttons svg:hover path {
+  fill: rgba(0,0,0,1);
+}
