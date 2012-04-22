@@ -95,7 +95,7 @@ pre {
   left: 0;
   padding-right: 2%;
   margin-left: 2%;
-  margin-bottom:122px;
+  margin-bottom:125px;
   width: 96%;
 }
 #console .buttons {
@@ -113,20 +113,23 @@ pre {
 #coffee-error {
   display: none;
   position: absolute;
-  bottom: 130px;
-  right: 20px;
-  font-size: 11px;
+  bottom: 120px;
+  right: 12px;
+  font-size: 12px;
   background: #f6f6f6;
   color: #999;
-  padding: 3px 8px 1px;
-  text-transform: uppercase;
-  border-radius: 4px;
+  padding: 3px 8px 3px;
+  border-radius: 3px;
+  border: 1px solid #d0d0d0;
+  z-index: 4;
+  font-weight: bold;
+  box-shadow: 0 0 3px #ddd;
 }
 #coffee-error.tried,
 #coffee-error.tried:hover {
-  font-weight: bold;
-  background: #e22;
-  color: #fff;
+  border: 1px solid #b00;
+  color: #b43;
+  background: #fff;
 }
 #coffee-error:hover {
   color: #000;
@@ -138,6 +141,7 @@ pre {
   margin: 0 2% 2px 2%;
   bottom: 0px;
   height: 120px;
+  z-index: 7;
 }
 .CodeMirror {
   height: 86%;
