@@ -113,29 +113,19 @@ pre {
 #coffee-error {
   display: none;
   position: absolute;
-  bottom: 123px;
-  right: 2%;
-  font-size: 10px;
+  bottom: 130px;
+  right: 20px;
+  font-size: 11px;
   background: #f6f6f6;
   color: #999;
   padding: 3px 8px 1px;
   text-transform: uppercase;
   border-radius: 4px;
-  top: 444px;
 }
-#coffee-error.tried {
+#coffee-error.tried,
+#coffee-error.tried:hover {
   font-weight: bold;
   background: #e22;
-  color: #fff;
-}
-#coffee-error .bang {
-  float: right;
-  color: #e11;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 12px;
-}
-#coffee-error.tried .bang {
   color: #fff;
 }
 #coffee-error:hover {
