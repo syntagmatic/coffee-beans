@@ -22,8 +22,8 @@
 <script src=lib/codemirror2/lib/util/javascript-hint.js></script>
 <link rel=stylesheet href=lib/codemirror2/lib/util/simple-hint.css>
 <link rel=stylesheet href=lib/codemirror2/lib/codemirror.css>
-<link rel=stylesheet href=coffeescript.css>
-<link rel=stylesheet href=style-old.css>
+<link rel=stylesheet href=css/coffeescript.css>
+<link rel=stylesheet href=css/style-old.css>
 <style>
 body {
   background: #ddd;
@@ -110,7 +110,7 @@ body {
         <p><a href="http://fleetinbeing.net/beans/">CoffeeBeans</a> uses a <a href="http://codemirror.net/">CodeMirror</a> editor with the following shortcuts</p>
         <table class="shortcuts">
           <tr>
-            <td>Enter</td>
+            <td>Shift-Enter</td>
             <td>Run code</td>
           </tr>
           <tr>
@@ -118,7 +118,7 @@ body {
             <td>Autocomplete</td>
           </tr>
           <tr>
-            <td>Shift-Enter</td>
+            <td>Enter</td>
             <td>New Line</td>
           </tr>
         </table>
@@ -202,5 +202,9 @@ circles
   <div id="chart"></div>
 <script src=commands.js></script>
 <script src=beans.js></script>
+
+<script>
+var beans = CoffeeBeans();
+</script>
 
 </html>

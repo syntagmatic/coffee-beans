@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>CoffeeBeans</title>
+<script src="lib/jquery.js"></script>
+<script src="lib/coffee-script.js"></script>
+<script src="lib/underscore.js"></script>
+<script src="lib/underscore.math/underscore.math.js"></script>
+<script src="lib/backbone.js"></script>
+<script src="lib/backbone-localstorage.js"></script>
+<script src="lib/js2coffee.min.js"></script>
+<script src="lib/require.js"></script>
+
+<script src=lib/codemirror2/lib/codemirror.js></script>
+<script src=lib/codemirror2/lib/util/runmode.js></script>
+<script src=lib/codemirror2/mode/javascript/javascript.js></script>
+<script src=coffeescript-mode.js></script>
+<script src=lib/codemirror2/lib/util/simple-hint.js></script>
+<script src=lib/codemirror2/lib/util/javascript-hint.js></script>
+<link rel=stylesheet href=lib/codemirror2/lib/util/simple-hint.css>
+<link rel=stylesheet href=lib/codemirror2/lib/codemirror.css>
+<link rel=stylesheet href=css/coffeescript.css>
+<link rel=stylesheet href=css/canvas.css>
+
+</head>
+
+<body>
+
+  <div id="console">
+    <canvas id="canvas" width=600 height=400></canvas>
+    <div class="inner">
+      <div id="puts">
+      </div>
+      <div id="coffee-error">
+        <span id="compile-error">
+        </span>
+      </div>
+      <div class="buttons">
+        <button id="start-loop">Start</button>
+        <button id="stop-loop">Stop</button>
+      </div>
+      <div id="input-wrap"><textarea id="input" class="input" wrap="off" rows="1"></textarea></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+
+
+<script src=commands.js></script>
+<script src=beans.js></script>
+<script>
+var beans = CoffeeBeans();
+
+var canvas = document.getElementById('canvas'),
+    ctx = canvas.getContext('2d'),
+    running = false,
+    w = canvas.width,
+    h = canvas.height;
+
+function render() {
+  if (!running) return;
+  try {
+    var code = CoffeeScript.compile(editor.getValue());
+    eval(code);
+  } catch (err) {
+    // do nothing
+  }
+};
+
+$('#start-loop').click(function() {
+  running = true;
+  $('#start-loop').hide();
+  $('#stop-loop').show();
+});
+
+$('#stop-loop').click(function() {
+  running = false;
+  $('#stop-loop').hide();
+  $('#start-loop').show();
+});
+
+// shim layer with setTimeout fallback
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       || 
+          window.webkitRequestAnimationFrame || 
+          window.mozRequestAnimationFrame    || 
+          window.oRequestAnimationFrame      || 
+          window.msRequestAnimationFrame     || 
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+(function animloop() {
+  requestAnimFrame(animloop);
+  render();
+})();
+
+/* New Globals */
+var globals = {
+  rand: Math.random,
+  round: Math.round,
+}
+_(globals).each(beans.addGlobal);
+
+window['rect'] = function() { ctx.fillRect.apply(ctx, arguments); };
+window['rect'].toString = function() { return "ctx.fillRect"; };
+
+window['fill'] = function(x) {
+  if (!arguments) return ctx.fillStyle;
+  ctx.fillStyle = x;
+};
+window['fill'].toString = function() { return "ctx.fillStyle"; };
+
+editor.setValue("ctx.fillStyle = '#222'\nctx.fillRect( w*rand(), h*rand(), 49*rand(), 10*rand())")
+</script>
+</body>
+
+</html>

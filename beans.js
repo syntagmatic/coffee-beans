@@ -1,4 +1,6 @@
-(function() {
+var CoffeeBeans = function() {
+  var beans = {};
+
   var commands = new Commands();
   commands.fetch();
   var curr = commands.size();  // current command
@@ -11,8 +13,8 @@
     theme: 'idle',
     onChange: test_compile,
     extraKeys: {
-      "Shift-Enter": CodeMirror.commands.newlineAndIndent,
-      "Enter": go,
+      "Enter": CodeMirror.commands.newlineAndIndent,
+      "Shift-Enter": go,
       "Up": up,
       "Down": down,
       "Tab": autocomplete,
@@ -362,8 +364,7 @@
     return CoffeeScript.compile(str).slice(16,-17);
   };
 
-  // forgive me
-  _(globals).each(function(v,k) {
+  beans.addGlobal = function(v,k) {
     if (_.isString(v)) {
       var func = eval(v);
       window[k] = function() { return func.apply(this, arguments); };
@@ -373,13 +374,14 @@
     if (_.isFunction(v)) {
       window[k] = v;
     }
-  });
+  };
+
+  // forgive me
+  _(globals).each(beans.addGlobal);
 
   // log
   window['log'] = function() { console.log.apply(console, arguments); };
   window['log'].toString = function() { return "console.log"; };
 
-
-})();
-
-
+  return beans;
+};

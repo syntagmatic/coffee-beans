@@ -1,0 +1,207 @@
+/* meyer reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, puts, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* styles */
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background: #f9f9f9;
+  font-size: 14px;
+  font-family: "Helvetica Neue", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+  min-width: 640px;
+}
+p {
+  line-height: 1.3em;
+  margin: 14px 0;
+}
+a {
+  color: #191933;
+}
+ul {
+  list-style-type: square;
+  margin-left: 16px;
+  color: #d0d0d0;
+}
+li {
+  line-height: 1.8em;
+}
+pre {
+  font-family: Monaco, Consolas, "Lucida Console", monospace;
+  color: black;
+  font-size: 12px;
+  line-height: 1.3em;
+}
+#console {
+  height: 100%;
+  width: 600px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -300px;
+  z-index: 10;
+  background: #fafafa;
+}
+#console .inner {
+  height: 100%;
+}
+#console pre {
+  margin: 0;
+  padding: 0;
+}
+#puts {
+  position: absolute;
+  overflow-y: auto;
+  overflow-x: hidden;
+  bottom: 0;
+  left: 0;
+  margin-bottom:125px;
+  width: 96%;
+}
+#input-wrap {
+  position: absolute;
+  width: 96%;
+  left: 0;
+  bottom: 0px;
+  height: 120px;
+  z-index: 7;
+}
+.CodeMirror {
+  height: 86%;
+}
+.CodeMirror-scroll {
+  height: 100%;
+  background: #fff;
+  margin: 0 0 8px 0;
+  padding: 4px 8px;
+  border: 1px solid #0076ad;
+  box-shadow: 0 0 3px #bbb;
+  font-size: 12px;
+  resize: both;
+  border-radius: 4px;
+}
+.CodeMirror-lines {
+  padding: .4em 0;
+}
+#console {
+  width: 50%;
+}
+#console .input {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 8px;
+  border: 1px solid #c8c8c8;
+  box-shadow: 0 0 3px #ddd;
+  border-radius: 4px;
+  background: #fff;
+}
+#console .puts {
+  overflow: auto;
+  padding: 4px 9px;
+}
+#console .beans-puts-coffee {
+  overflow: auto;
+  padding: 8px;
+}
+#console .error {
+  color: #e11;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 4px;
+}
+#main {
+  background: #f6f6f6 url('img/background.png');
+  margin-left: 50%;
+  width: 46%;
+  position: relative;
+  z-index: 5;
+  padding: 4px 2%;
+  border-left: 1px solid #d0d0d0;
+  box-shadow: inset 0 0 8px #ccc;
+  min-width: 320px;
+}
+h1 {
+  font-weight: bold;
+  font-size: 16px;
+  border-bottom: 1px solid #d0d0d0;
+  margin: 24px 0 12px;
+}
+h2 {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 24px 0 12px;
+}
+.highlight {
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  position: relative;
+}
+.clear {
+  clear: both;
+}
+em {
+  font-style: italic;
+}
+#console .buttons {
+  position: absolute;
+  bottom: 124px;
+  right: 0px;
+  margin: 0px 23px;
+}
+#console .buttons button {
+  float: right;
+  padding: 2px 6px;
+  margin: 4px 2px;
+}
+#stop-loop {
+  display: none;
+}
+#canvas {
+  z-index: 15;
+  position: relative;
+  margin-top: 20px;
+  background: #fff;
+  box-shadow: 0 4px 8px #ba9;
+}
