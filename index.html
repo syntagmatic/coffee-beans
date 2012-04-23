@@ -120,6 +120,88 @@ thumbnail aww[0]
     <pre class="highlight">
 each aww, (obj) -> puts thumbnail obj
 </pre>
+    <h1>Basics</h1>
+
+    <h2>Arrays</h2>
+    <pre class="highlight">
+five = [1,2,3,4,5]</pre>
+    <h2>Objects</h2>
+    <pre class="highlight">
+fruit_colors =
+  apple: 'red'
+  banana: 'yellow'
+  kiwi: 'green'</pre>
+    <h2>Functions</h2>
+    <pre class="highlight">
+# define a function
+square = (x) -> x*x
+
+# call the function
+square(5)
+</pre>
+    <h2>Comprehensions</h2>
+    <pre class="highlight">
+three_squares = (x*x for x in [1,2,3])</pre>
+    <h2>Chained Comparisons</h2>
+    <pre class="highlight">
+age = 14
+teen = 12 < age < 20</pre>
+    <h2>type</h2>
+    <p>Get the type of an object</p>
+    <pre class="highlight">
+type 2                  # number
+type "juice"            # string
+type {a:1}              # object
+type ->                 # function</pre>
+
+    <h1>Underscore Functions</h1>
+
+    <p>All these <a href="http://documentcloud.github.com/underscore/">Underscore.js</a> functions are available in the global namespace.</a> So instead of:</p>
+    <pre class="highlight">
+_.each([1,2,3], puts)</pre>
+    <p>The _. can be omitted. The parens can also be omitted- CoffeeScript will take care of them</p>
+    <pre class="highlight">
+each [1,2,3], puts</pre>
+
+    <h2><a href="http://documentcloud.github.com/underscore/#each">each</a></h2>
+    <p>Create three alerts:</p>
+    <pre class="highlight">
+each ['here', 'we', 'go!'], alert</pre>
+
+    <h2><a href="http://documentcloud.github.com/underscore/#map">map</a></h2>
+    <p>Convert radians to degrees</p>
+    <pre class="highlight">
+rad2deg = (x) -> x*180/pi
+map [pi/4, 3*pi/8, pi/2], rad2deg</pre>
+
+    <h2><a href="http://documentcloud.github.com/underscore/#filter">filter</a></h2>
+    <p>Filter even numbers</p>
+    <pre class="highlight">
+even = (x) -> x % 2 == 0
+filter [1,2,3,4,5], even</pre>
+
+    <h2><a href="http://documentcloud.github.com/underscore/#pluck">pluck</a></h2>
+    <p>Extract names from a list of objects</p>
+    <pre class="highlight">
+stooges = [
+  {name: 'moe', age: 40}
+  {name : 'larry', age : 50}
+  {name : 'curly', age : 60}
+]
+
+pluck stooges, 'name'
+</pre>
+
+    <h2><a href="http://documentcloud.github.com/underscore/#size">size</a></h2>
+    <p>Return the number of values in the list</p>
+    <pre class="highlight">
+size {one : 1, two : 2, three : 3}
+</pre>
+    <h2><a href="http://documentcloud.github.com/underscore/#shuffle">shuffle</a></h2>
+    <p>Shuffle an array using <a href="http://bost.ocks.org/mike/shuffle/">Fisher-Yates</a></p>
+    <pre class="highlight">
+shuffle [1,2,3,4,5,6]</pre>
+
     <h2>Events</h2>
     <p>A module which provides named <a href="http://documentcloud.github.com/backbone/#Events">events</a> on an object.</p>
     <p>First, make a button:</p>
@@ -159,11 +241,6 @@ sidebar.on 'change:color', (model, color) ->
 sidebar.color '#FFCC33'
 </pre>
 
-    <h2>SVG</h2>
-    <p>Print an SVG shape.</p>
-    <pre class="highlight">
-html "&lt;svg height=100&gt;&lt;circle cx=50 cy=50 r=40 fill=violet&gt;&lt;/svg&gt;"</pre>
-
     <h2>Colored puts</h2>
     <p>Print out colored lines.</p>
     <pre class="highlight">
@@ -178,71 +255,12 @@ pink_puts  = (text) -> color_puts(text, '#ff3366')
 green_puts "eggs and ham"
 red_puts "danger will robinson"
 pink_puts "happy to be here"
-</pre
->
-    <h2>Arrays</h2>
-    <pre class="highlight">
-five = [1,2,3,4,5]</pre>
-    <h2>Objects</h2>
-    <pre class="highlight">
-fruit_colors =
-  apple: 'red'
-  banana: 'yellow'
-  kiwi: 'green'</pre>
-    <h2>Functions</h2>
-    <pre class="highlight">
-# define a function
-square = (x) -> x*x
-
-# call the function
-square(5)
 </pre>
-    <h2>Comprehensions</h2>
-    <pre class="highlight">
-three_squares = (x*x for x in [1,2,3])</pre>
-    <h2>Chained Comparisons</h2>
-    <pre class="highlight">
-age = 14
-teen = 12 < age < 20</pre>
-    <h2>type</h2>
-    <p>Get the type of an object</p>
-    <pre class="highlight">
-type 2                  # number
-type "juice"            # string
-type {a:1}              # object
-type ->                 # function</pre>
 
-    <h2>each</h2>
-    <p>Perform a function on each element of an array or object</p>
+    <h2>SVG</h2>
+    <p>Print an SVG shape.</p>
     <pre class="highlight">
-each ['here', 'we', 'go!'], alert</pre>
-
-    <h2>map</h2>
-    <p></p>
-    <pre class="highlight">
-pi = Math.PI
-
-angles = [pi/4, 3*pi/8, pi/2]      # data
-convert = (x) -> x*180/pi          # converts radians to degrees
-
-map angles, convert</pre>
-
-    <h2>filter</h2>
-    <p>Filter even numbers</p>
-    <pre class="highlight">
-numbers = [1,2,3,4,5,6]            # data
-even = (x) -> x % 2 == 0           # true for even number
-
-filter numbers, even</pre>
-
-    <h2>DelayedOp</h2>
-    <p>See this <a href="http://www.reddit.com/r/coffeescript/comments/pkk7u/delayedop_five_handy_tiny_lines_of_coffeescript/">discussion</a> on usage.</p>
-    <pre class="highlight">
-class DelayedOp
-  constructor: (@callback) -> @count = 1
-  wait: => @count++
-  ok: => @callback() unless --@count
-  ready: => @ok()</pre>
+html "&lt;svg height=100&gt;&lt;circle cx=50 cy=50 r=40 fill=violet&gt;&lt;/svg&gt;"</pre>
 
     <h1>Resources</h1>
     <ul>
@@ -252,20 +270,6 @@ class DelayedOp
       <li><a href="http://codemirror.net/">CodeMirror</a></li>
       <li><a href="http://eloquentjavascript.net/">Eloquent JavaScript</a></li>
     </ul>
-    <!--
-    <div>
-      <div class="beans-video">
-        <iframe width="465" height="345" src="http://www.youtube.com/embed/0RTj3OQzLZk" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="beans-video">
-        <iframe width="465" height="345" src="http://www.youtube.com/embed/SdL6dzWvm5M" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="beans-video">
-        <iframe width="465" height="345" src="http://www.youtube.com/embed/fvsKkwbhfs8" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="clear"></div>
-    </div>
-    -->
   </div>
 <script src=commands.js></script>
 <script src=beans.js></script>
