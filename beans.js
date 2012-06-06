@@ -127,8 +127,8 @@ var CoffeeBeans = function() {
           puts_error("Puts error: " + error.message);
         }
       } catch (error) {
-        puts_error("Result: " + result);
-        puts_error("Javascript error: " + error.message);
+        // JavaScript runtime error
+        puts_error(error.message);
       }
     } else if (jscode.type == "error") {
       puts_error("CoffeeScript error: " + jscode.result.message);

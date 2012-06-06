@@ -22,7 +22,7 @@
 <link rel=stylesheet href=lib/codemirror2/lib/util/simple-hint.css>
 <link rel=stylesheet href=lib/codemirror2/lib/codemirror.css>
 <link rel=stylesheet href=css/coffeescript.css>
-<link rel=stylesheet href=css/style-old.css>
+<link rel=stylesheet href=css/style.css>
 
 </head>
 
@@ -202,7 +202,7 @@ size {one : 1, two : 2, three : 3}
     <pre class="highlight">
 shuffle [1,2,3,4,5,6]</pre>
 
-    <h2>Events</h2>
+    <h2>Backbone Events</h2>
     <p>A module which provides named <a href="http://documentcloud.github.com/backbone/#Events">events</a> on an object.</p>
     <p>First, make a button:</p>
     <pre class="highlight">
@@ -212,7 +212,7 @@ html "&lt;button id=&#x27;my-phone&#x27;&gt;Call Me!&lt;&#x2F;button&gt;"
     <pre class="highlight">
 phone = {}
 
-extend phone, Events
+extend phone, Backbone.Events
 
 # bind the phone's "ring" event to the button's "click"
 $('#my-phone').on 'click', ->
@@ -224,10 +224,10 @@ phone.on "ring", ->
 </pre>
     <p>Click the button!</p>
 
-    <h2>Models</h2>
+    <h2>Backbone Models</h2>
     <p>A <a href="http://documentcloud.github.com/backbone/#Model">Model</a> is a container for interactive data. Let's make a model to play with this sidebar's color.</p>
     <pre class="highlight">
-Sidebar = Model.extend
+Sidebar = Backbone.Model.extend
   color: (new_color) ->
     @set {color: new_color}
 
