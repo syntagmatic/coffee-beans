@@ -92,8 +92,7 @@ pre {
   overflow-x: hidden;
   bottom: 0;
   left: 0;
-  max-height: 82%;
-  margin-bottom: 18%;
+  margin-bottom: 120px;
   width: 100%;
 }
 #console .buttons {
@@ -137,7 +136,7 @@ pre {
   left: 0;
   margin: 0 2% 2px 2%;
   bottom: 0px;
-  height: 16%;
+  height: 110px;
   z-index: 7;
 }
 .CodeMirror {

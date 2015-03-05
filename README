@@ -2,4 +2,11 @@ CoffeeBeans
 
 A CoffeeScript Console
 
-Demo at http://fleetinbeing.net/beans/
+Demo at http://syntagmatic.github.io/coffee-beans
+
+## Development
+
+```
+git submodule init
+git submodule update
+```

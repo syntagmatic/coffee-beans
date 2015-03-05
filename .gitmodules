@@ -1,9 +1,9 @@
 [submodule "codemirror2"]
 	path = codemirror2
-	url = git://github.com/marijnh/CodeMirror2.git
+	url = git@github.com:codemirror/CodeMirror.git
 [submodule "lib/underscore.math"]
 	path = lib/underscore.math
 	url = git@github.com:syntagmatic/underscore.math.git
 [submodule "lib/codemirror2"]
 	path = lib/codemirror2
-	url = https://github.com/marijnh/CodeMirror2.git
+	url = git@github.com:codemirror/CodeMirror.git
