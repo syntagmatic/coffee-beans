@@ -1,6 +1,6 @@
 [submodule "lib/underscore.math"]
 	path = lib/underscore.math
-	url = git@github.com:syntagmatic/underscore.math.git
+	url = https://github.com/syntagmatic/underscore.math.git
 [submodule "lib/codemirror2"]
 	path = lib/codemirror2
 	url = https://github.com/codemirror/CodeMirror.git
